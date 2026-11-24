@@ -20,6 +20,9 @@
 \appto\biburlsetup{\Urlmuskip=0mu\relax}
 % zref-clever sorts multi-key references by section and number: the theorem-like counters are reset by section
 \zcsetup{counterresetby={theorem=section,lemma=section,corollary=section,proposition=section,conjecture=section,observation=section,property=section,definition=section,example=section,remark=section,note=section,claim=section,proofstep=section}}
+% serial comma also inside a list of references of one type: "sections 14.1, 14.2, and 15"
+% (zref-clever's English default puts it only between different types)
+\zcLanguageSetup{english}{lastsep = {,~and\nobreakspace}}
 % itemize labels: bullets (the class uses an en dash)
 \setlist[itemize,1]{label=\textbullet}
 
@@ -243,11 +246,11 @@ pdfauthor={Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, Ignasi S
 
 
 \noindent{\small\textbf{Discussion on the use of AI in this article.}\label{front:ai-start} 
-This project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some improvements, and at some point we started using LLMs (the actual models are irrelevant to this discussion). By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges with the LLMs, and after going through several intermediate results, the eventual proof presented here was found. Because of its length and complexity, we have not yet (humanly) revised the whole proof in detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write a human-readable proofs of the results in this paper, which we plan to make available.
+This project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some improvements, and at some point we started using LLMs (the actual models are irrelevant to this discussion). By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges with the LLMs, and after going through several intermediate results, the eventual proof presented here was found. Because of its length and complexity, we have not yet (humanly) revised the whole proof in detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write human-readable proofs of the results in this paper.
 \par\label{front:ai-end}}
 
 
-\metadatum{Related repository.}{We maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}
+\metadatum{Related repository.}{We will maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}
 
 % Funding: one entry per author, all aligned after the label "Funding." (hanging indentation)
 \newlength{\fundingindent}
@@ -280,7 +283,7 @@ The Grid Theorem of \textcite{RobertsonSeymour86} states that every graph of suf
 \textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid, and \textcite{CT21} subsequently improved it to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid.
 
 For digraphs, \textcite{Johnson2001} introduced directed treewidth (see \zcref{def:dtw}), a concept that was also proposed by \textcite{Reed99}.
-The directed-grid conjecture is the analogue of the Grid Theorem for digraphs, with directed treewidth, cylindrical grids, and butterfly minors in place of treewidth, grids, and minors (see \zcref{def:cyl-grid,def:butterfly}).
+The directed-grid conjecture is the analogue of the Grid Theorem for digraphs, with directed treewidth, cylindrical grids, and butterfly minors in place of treewidth, grids, and minors, respectively (see \zcref{def:cyl-grid,def:butterfly}).
 In~\cite[Section~5]{Johnson2001}, the authors record that this conjecture arose in a conversation of Robertson, Seymour, and Thomas with Noga Alon and Bruce Reed, and that it appeared in an equivalent form in the survey of \textcite{Reed97}.
 \textcite{JRSTplanar} proved the planar case in a manuscript from 2001, and \textcite{KK14} extended this result to digraphs whose underlying graphs exclude a fixed minor.
 Finally, \textcite{KawarabayashiK15} proved the conjecture, now known as the Directed Grid Theorem.
@@ -472,14 +475,14 @@ We also use the averaging argument of the local expansion lemma of \textcite{Bab
 
 \paragraph{Organization.}
 In \zcref{sec:overview}, we give an illustrated overview of the proof.
-In \zcref{sec:ov-clock}, we explain where the idea of a \emph{clock}, an integer time that orders the meetings of two linkages, comes from, and why we consider it one of the key points of our contribution.
+In particular, in \zcref{sec:ov-clock} we explain where the idea of a \emph{clock}, an integer time that orders the meetings of two linkages, comes from, and why we consider it one of the key points of our contribution.
 In \zcref{sec:prelim}, we fix the notation, state the textbook results that we use, give the formal definitions of the objects of the three stages, and state the result that provides the input of \zcref{step:linked-set}.
 The later sections follow the steps of the overview in order.
 In \zcref{sec:time,sec:chains,sec:density,sec:anchor}, we develop the shared machinery of \zcref{step:density,step:return}.
 In \zcref{sec:prep,sec:geo,sec:embed,sec:stage1}, we prove Stage~1, following \zcref{step:prep-ears,step:prep-nodes,step:geodesics,step:dense-pair,step:sparse}.
 In \zcref{sec:stage2}, we prove Stage~2 (\zcref{step:slab,step:stage2-close}), and in \zcref{sec:stage3}, we prove Stage~3 (\zcref{step:s3-assembly,step:s3-buffers,step:s3-close}).
 In \zcref{sec:main}, we compose the bounds (\zcref{step:count}) and derive the polynomial packing-covering consequences.
-Finally, in \zcref{sec:algorithms}, we present the algorithmic consequences.
+Finally, in \zcref{sec:algorithms}, we present the algorithmic consequences of our results.
 %%%%%% end chunks/01-intro.tex
 
 %
@@ -593,7 +596,7 @@ We therefore use the following three clocks.
 In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock.
 In the third clock, time runs forward along both linkages.
 \begin{itemize}
-  \item \emph{Residual cuts of a minimal linkage} (\zcref{sec:time}).
+  \item \emph{First clock: residual cuts of a minimal linkage} (\zcref{sec:time}).
     We reroute one linkage $\Rcal$ so that it is \hyperref[def:minimal]{minimal} with respect to the other linkage $\Qcal$ (\zcref{lem:reroute-exists}), that is, so that no arc of $\Rcal$ outside $\Qcal$ can be avoided by rerouting $\Rcal$ inside $\Rcal\cup\Qcal$.
     The \hyperref[def:residual]{residual digraph} of $\Rcal$ and $D(\Qcal)$ has two copies of each vertex, and its arcs run backward along the paths of $\Rcal$ and forward along the arcs of $\Qcal$.
     Even if the union of $\Rcal$ and $\Qcal$ contains cycles, the strong components of the residual digraph have a topological order.
@@ -608,14 +611,14 @@ In the third clock, time runs forward along both linkages.
     Hence, the vertices of one time on a path of $\Rcal$ meet at most one path of $\Qcal$, and no single time carries many meetings (see the proof of \zcref{cor:timed-dense}).
     We use this clock in the dense step of Stage~1 (\zcref{step:return}), and in Stage~2 both for the approximate cuts that bound the slab and for the dense case inside the slab (\zcref{step:slab,step:stage2-close}).
     For the approximate cuts, the base path takes the place of $\Qcal$.
-  \item \emph{The sum of two distances} (\zcref{sec:geo}).
+  \item \emph{Second clock: the sum of two distances} (\zcref{sec:geo}).
     Suppose that the paths of one linkage are shortest paths from a set $S$ and those of the other are shortest paths to a set $T$, for one common vertex length.
     Then the distance from $S$ plus the distance to $T$ is a time $\Phi$ that never decreases along the first linkage and never increases along the second, with no exceptional set (\zcref{lem:monotone}), as in \zcref{fig:ov-geotime}a.
     Within each level of $\Phi$, the union of the two linkages is acyclic.
     Hence, in the proof of the \hyperref[thm:gdl]{geodesic dense lemma}, we apply the density theorem either to $\Phi$ or, inside a level of $\Phi$ that carries too many meetings, to a topological order of this union, which is the third clock below.
     We use this clock for the dense pairs of Stage~1 (\zcref{step:dense-pair}), whose linkages are shortest paths for one vertex length obtained from one linear program (\zcref{lem:geosystem}).
     The proof of the monotonicity of $\Phi$ is similar to an argument of \textcite[Lemma~7]{BercziK17} for disjoint shortest paths.
-  \item \emph{A topological order of an acyclic union} (\zcref{cor:acyclic}).
+  \item \emph{Third clock: a topological order of an acyclic union} (\zcref{cor:acyclic}).
     This is the clock of our earlier manuscript described above.
     In this article, we use it inside the levels of $\Phi$ that carry too many meetings (see the proof of \zcref{thm:gdl}).
 \end{itemize}
