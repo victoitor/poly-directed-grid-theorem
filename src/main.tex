@@ -402,7 +402,7 @@ Namely, we prove the following polynomial versions of~\cite[Theorem~9.9]{HKMM26a
   % The numbers $w_3(k)$ and $\ell_3(k)$ are positive integers with $\ell_3(k)\ge2$, and every cycle of well-linked sets of width at least $w_3(k)$ and length at least $\ell_3(k)$ contains the cylindrical grid $G_k$ as a butterfly minor.
 \end{theorem}
 
-We prove Stage~1 in \zcref{cor:stage1}, Stage~2 in \zcref{thm:closing}, and Stage~3 in \zcref{thm:stage3}.
+We restate these three theorems in their full versions, with explicit thresholds and with the same numbers, in \zcref{sec:stage1,sec:stage2,sec:stage3}, respectively, where we complete their proofs.
 To compose the three stages, we choose the parameters backward from the order of the desired grid.
 Namely, Stage~3 fixes the width and the length of the cycle of well-linked sets, Stage~2 those of the good path, and Stage~1 the directed treewidth.
 We carry out this composition in \zcref{sec:main}, and we present the degree calculation in \zcref{step:count}.
@@ -1108,7 +1108,7 @@ We do not describe here the consequences derived in \zcref{sec:main-younger,sec:
   As in the bramble construction of \textcite[Theorem~6.1]{CLNS26}, which starts from this combination, we work with $P$ and $A$ directly, without first building a path system.
   From $P$ and $A$, we then obtain an $H$-expansion or a good path in \zcref{step:prep-ears,step:prep-nodes,step:geodesics,step:dense-pair,step:sparse}, using the machinery of \zcref{step:density,step:return}.
 Stage~1 is the case $H=\Hwl$, since every expansion of $\Hwl$ contains a good path.}
-\src{\zcref{sec:prelim-expansions,sec:prelim-dtw,sec:stage1}; \zcref{def:linked,def:Hwl,lem:read-path,prop:linked-path,rem:clms,thm:main,cor:stage1,thm:core}.}
+\src{\zcref{sec:prelim-expansions,sec:prelim-dtw,sec:stage1}; \zcref{def:linked,def:Hwl,lem:read-path,prop:linked-path,rem:clms,thm:main,thm:stage1,thm:core}.}
 
 % ------------------------------------------------------------------
 \step{density}{Clocks and the density theorem}
@@ -2200,7 +2200,7 @@ For $H=\Hwl$, this completes Stage~1.}
   For the Directed Grid Theorem, a similar alternative, with a bidirected clique in the sparse case, appears in~\cite[Lemma~4.8 and Theorem~4.2]{KawarabayashiK15} and~\cite[Lemma~5.13 and Theorem~5.14]{HKMM26a}.
   \textcite[proof of Lemma~3.3]{MPRS22} chose one path from each linkage of a path system in a similar way, using the degeneracy form~\cite[Lemma~4.3]{RW12} of the independent-transversal lemma.
 In \zcref{sec:embed}, we compare our choice of routes with the method of \textcite[Section~4]{HKPS22}, who sampled paths from a concurrent flow, similarly to \textcite{GroheM09}.}
-\src{\zcref{sec:embed,sec:stage1-core}; \zcref{def:expansion,lem:subcubic,prop:indep-transversal,cor:weight,lem:read-path,cor:stage1}; inputs: \zcref{obs:walk-path,def:trim}; \zcref{part:core-5} of the proof of \zcref{thm:core}; parameters in \zcref{tab:params}.}
+\src{\zcref{sec:embed,sec:stage1-core}; \zcref{def:expansion,lem:subcubic,prop:indep-transversal,cor:weight,lem:read-path,thm:stage1}; inputs: \zcref{obs:walk-path,def:trim}; \zcref{part:core-5} of the proof of \zcref{thm:core}; parameters in \zcref{tab:params}.}
 \begin{ovfigure}%
   %%%%%% begin overview/figs/lll.tex
   % Figure: embedding by an independent transversal (lem:subcubic, prop:indep-transversal and the proof of cor:weight).
@@ -3168,7 +3168,7 @@ Finally, the return paths close the staircases into $k$ cycles, with one stairca
   \[
     \deg p=4512\cdot2\,320+(2100+3064)\cdot1\,852=20\,031\,568.
 \]}
-\src{\zcref{sec:main}; the definition~\eqref{eq:pk} of $p$ and \zcref{lem:pk-degree}; the choice~\eqref{eq:main-wl} of $w'$ and $\ell'$; \zcref{thm:grid-main,thm:stage3,rem:closing-size,cor:stage1,lem:prep-size}; the bookkeeping in \zcref{sec:prep-check,sec:stage1-params,sec:stage2-params,sec:stage2-check}.}
+\src{\zcref{sec:main}; the definition~\eqref{eq:pk} of $p$ and \zcref{lem:pk-degree}; the choice~\eqref{eq:main-wl} of $w'$ and $\ell'$; \zcref{thm:grid-main,thm:stage3,rem:closing-size,thm:stage1,lem:prep-size}; the bookkeeping in \zcref{sec:prep-check,sec:stage1-params,sec:stage2-params,sec:stage2-check}.}
 
 \FloatBarrier
 % End of the illustrated guide: restore \flushbottom for the formal proofs.
@@ -6277,7 +6277,7 @@ Since the color classes are independent, the edges with one endpoint in $V_i$, a
 %%%%%% begin chunks/10-stage1.tex
 \section{Stage 1: an expansion or a good path}\label{sec:stage1}
 
-In this section we prove Stage~1 (\zcref{cor:stage1}), which states that every digraph of large directed treewidth contains a good path of well-linked sets of large width and length.
+In this section we prove Stage~1 (\zcref{thm:stage1}), which states that every digraph of large directed treewidth contains a good path of well-linked sets of large width and length.
 More generally, we prove in \zcref{thm:main} that, for every digraph $H$ with at least one vertex, every digraph of large directed treewidth contains an $H$-expansion or a good path of well-linked sets.
 Stage~1 is the case $H=\Hwl$ of this result, since such an expansion contains a good path by \zcref{lem:read-path}.
 In both results, the threshold on the directed treewidth is bounded by a polynomial.
@@ -6289,20 +6289,20 @@ In both results, the threshold on the directed treewidth is bounded by a polynom
   Moreover, the threshold $t_P$ is bounded by a polynomial in $k_H,w,\ell$.
 \end{theorem}
 
-\begin{corollary}[Stage 1]\label{cor:stage1}
+We now state the full version of \zcref{thm:intro-stage1}, our polynomial version of~\cite[Theorem~9.9]{HKMM26a}, which gives an explicit bound on the threshold.
+
+\begin{theorem}[manual-num=\ref*{thm:intro-stage1}, note={Stage~1, full version}]\label{thm:stage1}
   Let $w,\ell\ge1$ be integers, and let $t_P(w,\ell)=t_P(k_{\Hwl},w,\ell)$, where $\Hwl$ is the digraph of \zcref{def:Hwl}.
   Every digraph $D$ with $\dtw(D)\ge t_P(w,\ell)$ contains a good path of well-linked sets of width $w$ and length $\ell$.
   Moreover,
   \[
     t_P(w,\ell)\le6\cdot2^{54126}w^{4512}\ell^{2100}(\ell+4)^{3064}.
   \]
-\end{corollary}
-
-\zcref{cor:stage1} restates \zcref{thm:intro-stage1}, our polynomial version of~\cite[Theorem~9.9]{HKMM26a}.
+\end{theorem}
 
 We now outline the proof of \zcref{thm:main}.
 By \zcref{prop:linked-path}, which provides the path and the linked set of \zcref{step:linked-set}, it suffices to prove the linked-set form of \zcref{thm:main}, namely \zcref{thm:core}.
-We prove \zcref{thm:core} in \zcref{sec:stage1-core}, where we also check the bounds of \zcref{thm:main,cor:stage1}.
+We prove \zcref{thm:core} in \zcref{sec:stage1-core}, where we also check the bounds of \zcref{thm:main,thm:stage1}.
 In \zcref{part:core-1} of the proof of \zcref{thm:core}, we apply \zcref{thm:pair-preparation}, which performs the preparation of \zcref{step:prep-ears,step:prep-nodes} and gives us a good path or a node system with anchored pair linkages.
 In the second case, we reroute these pair linkages as common geodesics in \zcref{part:core-2,part:core-3}, by \zcref{lem:geosystem} and as in \zcref{step:geodesics}.
 If two of these linkages, on four distinct nodes, have many pairs of paths that meet, that is, if they form a dense pair (see \zcref{part:core-4}), then we proceed as in \zcref{step:dense-pair}.
@@ -6347,11 +6347,11 @@ Each row depends only on $k_H$, $w$, $\ell$, and the earlier rows.
 \end{table}
 
 Note that $n$, $w_0$, $L$, $n_A$, $h_A$, $d'$, $g$, and $N$ are positive integers, that $d'=h_A\ge n_A$ by \eqref{eq:gdl-params}, and that $N\ge4$ by \zcref{lem:prep-size}.
-We check the explicit bound of Stage~1 after the construction, in the proof of \zcref{cor:stage1}.
+We check the explicit bound of Stage~1 after the construction, in the proof of \zcref{thm:stage1}.
 
 \subsection{The linked-set form and the proofs}\label{sec:stage1-core}
 
-In this subsection we state and prove the following linked-set form of \zcref{thm:main}, and we then deduce \zcref{thm:main} itself and \zcref{cor:stage1}.
+In this subsection we state and prove the following linked-set form of \zcref{thm:main}, and we then deduce \zcref{thm:main} itself and \zcref{thm:stage1}.
 
 \begin{theorem}[Linked-set form]\label{thm:core}
   Let $H$ be a digraph with at least one vertex, let $w,\ell\ge1$ be integers, and let $N$ and the other parameters be those of \zcref{tab:params}.
@@ -6443,7 +6443,7 @@ In this subsection we state and prove the following linked-set form of \zcref{th
   Using \zcref{lem:prep-size}, we see that the entries of \zcref{tab:params} are polynomially bounded in $k_H,w,\ell$, and hence so is $t_P$.
 \end{proof}
 
-\begin{proof}[Proof of \zcref{cor:stage1}]
+\begin{proof}[Proof of \zcref{thm:stage1}]
   We apply \zcref{thm:main} with $H=\Hwl$.
   By \zcref{lem:read-path}, an $H$-expansion contains a good path of width $w$ and length $\ell$, so in both outcomes $D$ contains a good path of well-linked sets of width $w$ and length $\ell$.
 
@@ -6477,7 +6477,7 @@ In this subsection we state and prove the following linked-set form of \zcref{th
 %%%%%% begin chunks/11-stage2a.tex
 \section{Stage 2: closing a good path}\label{sec:stage2}
 
-In this section we turn the good path of well-linked sets provided by Stage~1 (\zcref{cor:stage1}) into a cycle of well-linked sets of smaller width and length.
+In this section we turn the good path of well-linked sets provided by Stage~1 (\zcref{thm:stage1}) into a cycle of well-linked sets of smaller width and length.
 Since the path is good, there is a large linkage from its last outer interface back to its first one, and this linkage may meet the clusters and the linkages of the path arbitrarily.
 We find the cycle in the union of the path and of this linkage.
 
@@ -6490,9 +6490,9 @@ We replace their jumps and horizontal webs by slices obtained from the chain of 
 As we do for paths, we regard a walk as the subgraph formed by the vertices and arcs that it traverses.
 The letters that we introduce in this section are local to it.
 
-We now state the main result of this section.
+We now state the main result of this section, the full version of \zcref{thm:intro-stage2}.
 
-\begin{theorem}[Closing a path]\label{thm:closing}
+\begin{theorem}[manual-num=\ref*{thm:intro-stage2}, note={Stage~2, full version}]\label{thm:closing}
   Let $w\ge1$ and $\ell\ge2$ be integers, and let $r_2=r_2(w,\ell)$, $w_2'=w_2'(w,\ell)$, and $\ell_2'=\ell_2'(w,\ell)$ be the positive integers of \zcref{def:closing-params}, for which
   \[
     r_2=\Theta(w^{20}\ell^{20}),\qquad w_2'=\Theta(w^{29}\ell^{30}),\qquad\ell_2'=\Theta(w^{23}\ell^{24})
@@ -8041,9 +8041,9 @@ Stage~2 (\zcref{thm:closing}) provides such a cycle.
 Throughout this section, $k$ denotes the order of the cylindrical grid, and $K$ denotes the size of an acyclic grid (see \zcref{def:s3-grid}).
 All other letters are local to the statement or the proof in which they are introduced, except the polynomials $W$ and $C$ of \zcref{lem:anchored-grid}.
 
-We now state the main result of this section.
+We now state the main result of this section, the full version of \zcref{thm:intro-stage3}.
 
-\begin{theorem}[A grid in a cycle of well-linked sets]\label{thm:stage3}
+\begin{theorem}[manual-num=\ref*{thm:intro-stage3}, note={Stage~3, full version}]\label{thm:stage3}
   For every integer $k\ge2$, let
   \begin{equation}\label{eq:s3-thresholds}
     w_3(k)=W(11k^2),\qquad\ell_3(k)=C(11k^2)+1,
@@ -9866,7 +9866,7 @@ In the increasing case, suitable staircase paths in the grid close individually 
 \section{Proof of the main theorem}\label{sec:main}
 
 In this section we combine the three stages and prove \zcref{thm:grid-main}.
-Stage~1 provides a good path of well-linked sets (\zcref{cor:stage1}), Stage~2 closes it into a cycle of well-linked sets (\zcref{thm:closing}), and Stage~3 finds the cylindrical grid in this cycle (\zcref{thm:stage3}).
+Stage~1 provides a good path of well-linked sets (\zcref{thm:stage1}), Stage~2 closes it into a cycle of well-linked sets (\zcref{thm:closing}), and Stage~3 finds the cylindrical grid in this cycle (\zcref{thm:stage3}).
 In \zcref{lem:pk-degree} below, we carry out the degree calculation sketched in \zcref{step:count}.
 Finally, in \zcref{sec:main-younger,sec:main-patterns}, we derive polynomial packing-covering bounds for cycles and for other strongly connected patterns.
 
@@ -9876,7 +9876,7 @@ We use Stage~1 to obtain a good path of well-linked sets of width $w'(k)$ and le
   w'(k)=2^{211}3^{11}\,w_3(k)^{29}\bigl(\ell_3(k)+1\bigr)^{30},\qquad\ell'(k)=2^{162}3^{8}\,w_3(k)^{23}\bigl(\ell_3(k)+1\bigr)^{24}.
 \end{equation}
 As we check in the proof of \zcref{thm:grid-main}, these values meet the closing thresholds (see \zcref{def:closing-params}) for a cycle of well-linked sets of width $w_3(k)$ and length $\ell_3(k)$.
-Let $p$ be the bound of \zcref{cor:stage1} on $t_P(w,\ell)$ at $w=w'(k)$ and $\ell=\ell'(k)$, that is,
+Let $p$ be the bound of \zcref{thm:stage1} on $t_P(w,\ell)$ at $w=w'(k)$ and $\ell=\ell'(k)$, that is,
 \begin{equation}\label{eq:pk}
   p(k)=6\cdot2^{54126}\,w'(k)^{4512}\,\ell'(k)^{2100}\,\bigl(\ell'(k)+4\bigr)^{3064}.
 \end{equation}
@@ -9908,13 +9908,13 @@ We are now ready to prove \zcref{thm:grid-main}.
   By \zcref{lem:pk-degree}, the polynomial $p$ defined in~\eqref{eq:pk} has degree $20\,031\,568$.
   Let $k\ge2$ be an integer, and let $D$ be a digraph with $\dtw(D)\ge p(k)$.
   We let $w=w_3(k)$ and $\ell=\ell_3(k)$, which are positive integers with $\ell\ge2$ by \zcref{thm:stage3}.
-  By \zcref{cor:stage1,rem:closing-size}, by~\eqref{eq:stage2-ell2bound}, and by the definitions~\eqref{eq:main-wl} and~\eqref{eq:pk}, the thresholds of Stage~1 and Stage~2 satisfy
+  By \zcref{thm:stage1,rem:closing-size}, by~\eqref{eq:stage2-ell2bound}, and by the definitions~\eqref{eq:main-wl} and~\eqref{eq:pk}, the thresholds of Stage~1 and Stage~2 satisfy
   \[
     t_P\bigl(w'(k),\ell'(k)\bigr)\le p(k),\qquad
     w_2'(w,\ell)=w'(k),\qquad\ell_2'(w,\ell)\le\ell'(k).
   \]
   By \zcref{lem:pk-degree}, the numbers $w'(k)$ and $\ell'(k)$ are positive integers.
-  Therefore, by \zcref{cor:stage1}, $D$ contains a good path of well-linked sets of width $w'(k)$ and length $\ell'(k)$.
+  Therefore, by \zcref{thm:stage1}, $D$ contains a good path of well-linked sets of width $w'(k)$ and length $\ell'(k)$.
   We apply the last assertion of \zcref{thm:closing} to this path and obtain a cycle of well-linked sets of width $w$ and length $\ell$ in $D$.
   Hence, by \zcref{thm:stage3}, $D$ contains the cylindrical grid $G_k$ as a butterfly minor.
 \end{proof}
