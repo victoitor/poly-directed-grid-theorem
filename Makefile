@@ -1,0 +1,72 @@
+# Rodar tarefas em paralelo
+# MAKEFLAGS += -j
+# MAKEFLAGS += --output-sync
+
+# Diretórios
+SRCDIR	:= src
+TMPDIR	:= .tmp
+OUTDIR	:= out
+CURDIR	:= $(shell pwd)
+
+# Inclui arquivo com definição de texfiles, se existir. Se TEXFILES não estiver definido, usa todos os arquivos *.tex que contém "\documentclass" na pasta de fontes
+-include $(SRCDIR)/.env.texfiles
+ifdef TEXFILES
+	TEXFILES := $(subst ",,$(TEXFILES))
+	TEXFILES := $(TEXFILES:%=$(SRCDIR)/%)
+else
+	TEXFILES := $(shell grep -rl '^[ \t]*\\documentclass' --include='*.tex' $(SRCDIR))
+endif
+
+# Arquivos pdf no diretório de saída a partir dos arquivos de entrada
+PDFFILES	:= $(TEXFILES:%.tex=%.pdf)
+OUTPDFFILES	:= $(TEXFILES:$(SRCDIR)/%.tex=$(OUTDIR)/%.pdf)
+
+# Flags para os comandos
+LATEXFLAGS		= -pdf
+LATEXFLAGS		+= -cd
+LATEXFLAGS		+= -file-line-error 
+# LATEXFLAGS		+= -emulate-aux-dir 
+
+# Incluir apenas um dos dois a seguir
+# LATEXFLAGS		+= -interaction=nonstopmode 
+LATEXFLAGS		+= -halt-on-error
+
+
+.PHONY: all
+all: pdf-synctex
+
+.PHONY: pdf
+pdf: $(PDFFILES)
+
+.PHONY: outpdf
+outpdf: $(OUTPDFFILES)
+
+.PHONY: pdf-synctex
+pdf-synctex: LATEXFLAGS	+= -synctex=1 
+pdf-synctex: pdf
+
+# Regra para gerar .pdf a partir de .tex na pasta out.
+.PHONY: FORCE_MAKE
+$(OUTDIR)/%.pdf: $(SRCDIR)/%.tex FORCE_MAKE
+	latexmk $(LATEXFLAGS) -aux-directory=$(CURDIR)/$(dir $(TMPDIR)/$*) -output-directory=$(CURDIR)/$(dir $@) $<
+
+# Regra para gerar .pdf a partir de .tex na pasta out.
+$(SRCDIR)/%.pdf: $(SRCDIR)/%.tex FORCE_MAKE
+	latexmk $(LATEXFLAGS) $<
+
+# Limpa os arquivos temporários
+.PHONY: clean-all
+clean-all: LATEXFLAGS	+= -C
+clean-all: pdf-synctex outpdf
+
+# Limpa os arquivos de saída e temporários
+.PHONY: clean
+clean: LATEXFLAGS	+= -c
+clean: pdf-synctex outpdf
+
+# Debug
+print-%: 
+	@echo '$*=$($*)' 
+	@echo ' origin = $(origin $*)' 
+	@echo ' flavor = $(flavor $*)' 
+	@echo ' value = $(value $*)'
