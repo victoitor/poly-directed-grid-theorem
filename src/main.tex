@@ -229,26 +229,37 @@ pdfauthor={Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, Ignasi S
 \begin{abstract}
   The Directed Grid Theorem of Kawarabayashi and Kreutzer [STOC 2015] states that there is a function $f$ such that every digraph of directed treewidth at least $f(k)$ contains a cylindrical grid of order $k$ as a butterfly minor.
   Their function is not elementary, and Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024] improved it to a tower of exponentials of height $22$, by a proof in three stages through good paths and cycles of well-linked sets.
-  We prove each stage with a polynomial bound, so that $f$ can be chosen to be a polynomial of degree $20\,031\,568$.
-  As a consequence, Younger's conjecture, proved by Reed, Robertson, Seymour, and Thomas, holds with a polynomial bound: for the polynomial $f$ that we construct, every digraph without $k$ pairwise disjoint cycles has a feedback vertex set of size at most $(k-1)f(k)$.
+  In this article we prove each stage with a polynomial bound, so that $f$ can be chosen to be a polynomial of degree $20\,031\,568$.
+  As a consequence, Younger's conjecture, proved by Reed, Robertson, Seymour, and Thomas [Combinatorica, 1996], holds with a polynomial bound: for the polynomial $f$ that we construct, every digraph without $k$ pairwise disjoint cycles has a feedback vertex set of size at most $(k-1)f(k)$.
 \end{abstract}
 %%%%%% end chunks/00-abstract.tex
 
-\noindent{\small\textbf{Keywords.} directed treewidth, cylindrical grid, Directed Grid Theorem, polynomial bound, linkages, cycle of well-linked sets.\par}
+\noindent{\small\textbf{Keywords.} directed treewidth, cylindrical grid, Directed Grid Theorem, polynomial bound, linkages, cycle of well-linked sets, Younger's conjecture, Erdős-Pósa property. \par}
 \label{front:keywords}
-\metadatum{Funding.}{\emph{Victor Campos}: Bolsa de Produtividade em Pesquisa - PQ  (CNPq 310785/2025-1),
-  TAPIOCA - Teoria Aplicada a Problemas Integrando Otimização, Combinatória e Algoritmos (CNPq 404479/2023-5), CAPES / COFECUB 437841/2018-9.\\
-  \emph{Raul Lopes}: HIDSS-0002 DASHH (Data Science in Hamburg - Helmholtz Graduate School for the Structure of Matter).\\
-\emph{Ignasi Sau}: French project ELIT (ANR-20-CE48-0008-01).}
+
+% Funding: one entry per author, all aligned after the label "Funding." (hanging indentation)
+\newlength{\fundingindent}
+\settowidth{\fundingindent}{\small\textbf{Funding.}\enskip}
+\par\bigskip
+{\small\parskip=0pt
+\noindent\hangindent\fundingindent\hangafter1
+\textbf{Funding.}\enskip\emph{Victor Campos}: CNPq (Bolsa de Produtividade em Pesquisa 310785/2025-1 and project TAPIOCA 404479/2023-5) and CAPES/COFECUB (437841/2018-9).\par
+\noindent\hangindent\fundingindent\hangafter0
+\emph{Raul Lopes}: DASHH, Data Science in Hamburg -- Helmholtz Graduate School for the Structure of Matter (HIDSS-0002).\par
+\noindent\hangindent\fundingindent\hangafter0
+\emph{Rodrigo Nogueira}: \textcolor{red}{[to be completed]}.\par
+\noindent\hangindent\fundingindent\hangafter0
+\emph{Ignasi Sau}: French ANR project ELIT (ANR-20-CE48-0008-01).\par}
 \label{front:funding}
 
 \metadatum{Related repository.}{We maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}
 
-\begingroup\small
-\paragraph{Discussion on the use of AI in this article.}\label{front:ai-start} The proof presented in this manuscript was obtained and verified using LLMs (the actual models are irrelevant to this discussion). Because of its length and complexity, we have not yet (humanly) revised the whole proof in full detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write a human-readable proof of this result, which we plan to make available as well.
+\bigskip
 
-In fact, this project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some significant improvements, and at some point we started using LLMs. By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges, and after going through several intermediate results, the eventual proof presented here was found. We admit that most of the ideas of the current proof have been exclusively found by the LLMs, hence we do not claim intellectual merit for it.
-\par\label{front:ai-end}\endgroup
+
+\noindent{\small\textbf{Discussion on the use of AI in this article.}\label{front:ai-start} 
+This project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some improvements, and at some point we started using LLMs (the actual models are irrelevant to this discussion). By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges with the LLMs, and after going through several intermediate results, the eventual proof presented here was found. Because of its length and complexity, we have not yet (humanly) revised the whole proof in detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write a human-readable proof of this result, which we plan to make available as well.
+\par\label{front:ai-end}}
 
 % Contents on a page of its own; sections only, with subsections in the PDF bookmarks.
 \clearpage
