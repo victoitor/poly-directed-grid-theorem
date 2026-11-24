@@ -1,8 +1,8 @@
-# Toward a human-readable proof of a polynomial bound for the Directed Grid Theorem
+# Toward a human-friendly proof of a polynomial bound for the Directed Grid Theorem
 
 Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, and Ignasi Sau
 
-On this page we keep up-to-date information on our ongoing project: a human-readable proof of a polynomial bound for the Directed Grid Theorem.
+On this page we keep up-to-date information on our ongoing project: a human-friendly proof of a polynomial bound for the Directed Grid Theorem.
 
 ## Paper
 
