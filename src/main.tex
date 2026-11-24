@@ -20,6 +20,9 @@
 \appto\biburlsetup{\Urlmuskip=0mu\relax}
 % zref-clever sorts multi-key references by section and number: the theorem-like counters are reset by section
 \zcsetup{counterresetby={theorem=section,lemma=section,corollary=section,proposition=section,conjecture=section,observation=section,property=section,definition=section,example=section,remark=section,note=section,claim=section,proofstep=section}}
+% serial comma also inside a list of references of one type: "sections 14.1, 14.2, and 15"
+% (zref-clever's English default puts it only between different types)
+\zcLanguageSetup{english}{lastsep = {,~and\nobreakspace}}
 % itemize labels: bullets (the class uses an en dash)
 \setlist[itemize,1]{label=\textbullet}
 
@@ -593,7 +596,7 @@ We therefore use the following three clocks.
 In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock.
 In the third clock, time runs forward along both linkages.
 \begin{itemize}
-  \item \emph{First clock: Residual cuts of a minimal linkage} (\zcref{sec:time}).
+  \item \emph{First clock: residual cuts of a minimal linkage} (\zcref{sec:time}).
     We reroute one linkage $\Rcal$ so that it is \hyperref[def:minimal]{minimal} with respect to the other linkage $\Qcal$ (\zcref{lem:reroute-exists}), that is, so that no arc of $\Rcal$ outside $\Qcal$ can be avoided by rerouting $\Rcal$ inside $\Rcal\cup\Qcal$.
     The \hyperref[def:residual]{residual digraph} of $\Rcal$ and $D(\Qcal)$ has two copies of each vertex, and its arcs run backward along the paths of $\Rcal$ and forward along the arcs of $\Qcal$.
     Even if the union of $\Rcal$ and $\Qcal$ contains cycles, the strong components of the residual digraph have a topological order.
@@ -608,14 +611,14 @@ In the third clock, time runs forward along both linkages.
     Hence, the vertices of one time on a path of $\Rcal$ meet at most one path of $\Qcal$, and no single time carries many meetings (see the proof of \zcref{cor:timed-dense}).
     We use this clock in the dense step of Stage~1 (\zcref{step:return}), and in Stage~2 both for the approximate cuts that bound the slab and for the dense case inside the slab (\zcref{step:slab,step:stage2-close}).
     For the approximate cuts, the base path takes the place of $\Qcal$.
-  \item \emph{Second clock: The sum of two distances} (\zcref{sec:geo}).
+  \item \emph{Second clock: the sum of two distances} (\zcref{sec:geo}).
     Suppose that the paths of one linkage are shortest paths from a set $S$ and those of the other are shortest paths to a set $T$, for one common vertex length.
     Then the distance from $S$ plus the distance to $T$ is a time $\Phi$ that never decreases along the first linkage and never increases along the second, with no exceptional set (\zcref{lem:monotone}), as in \zcref{fig:ov-geotime}a.
     Within each level of $\Phi$, the union of the two linkages is acyclic.
     Hence, in the proof of the \hyperref[thm:gdl]{geodesic dense lemma}, we apply the density theorem either to $\Phi$ or, inside a level of $\Phi$ that carries too many meetings, to a topological order of this union, which is the third clock below.
     We use this clock for the dense pairs of Stage~1 (\zcref{step:dense-pair}), whose linkages are shortest paths for one vertex length obtained from one linear program (\zcref{lem:geosystem}).
     The proof of the monotonicity of $\Phi$ is similar to an argument of \textcite[Lemma~7]{BercziK17} for disjoint shortest paths.
-  \item \emph{A topological order of an acyclic union} (\zcref{cor:acyclic}).
+  \item \emph{Third clock: a topological order of an acyclic union} (\zcref{cor:acyclic}).
     This is the clock of our earlier manuscript described above.
     In this article, we use it inside the levels of $\Phi$ that carry too many meetings (see the proof of \zcref{thm:gdl}).
 \end{itemize}
