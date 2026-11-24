@@ -304,13 +304,13 @@ Note that every digraph containing a cylindrical grid of order $k$ as a butterfl
 In this article we show that $f$ can be chosen to be a polynomial, by proving the following result.
 
 \needspace{6\baselineskip}
-\begin{theorem}[A polynomial Directed Grid Theorem, informal]\label{thm:grid-main}
+\begin{theorem}[A polynomial Directed Grid Theorem]\label{thm:grid-main}
   There exists a function $f \colon \NN \to \NN$ with $f(k) = \Ocal(k^{20\,031\,568})$ such that any digraph $D$ with $\dtw(D) \ge f(k)$ contains the cylindrical grid of order $k$ as a butterfly minor.
   % is a polynomial $p$ of degree $20\,031\,568$ with positive leading coefficient, defined in~\eqref{eq:pk}, such that, for every integer $k\ge2$, every digraph $D$ with directed treewidth $\dtw(D)\ge p(k)$ contains the cylindrical grid $G_k$ of order $k$ as a butterfly minor.
 \end{theorem}
 
 We remark that our goal was to obtain a polynomial bound, and we made no attempt to optimize its degree.
-For comparison, every admissible function $f$ must satisfy $f(k)=\Omega(k^2\log k)$.
+The best known lower bound for the function $f$ is $f(k)=\Omega(k^2\log k)$.
 This follows from the undirected lower bound of \textcite{RST94}, by replacing each edge by two opposite arcs (see \zcref{prop:grid-lower-bound}).
 By a remark of \textcite[Section~6]{HKMM26b}, \zcref{thm:grid-main} also answers their questions~6.2 and~6.4 on webs affirmatively.
 
@@ -349,10 +349,11 @@ We say that a digraph is \emph{$(k,c)$-linked} if, for all vertices $s_1,t_1,\do
 They deduced that there is a polynomial $g$ such that every $g(k)$-strongly connected digraph is $(k,8)$-linked.
 Similarly, the authors of~\cite{CLNS26} deduced from their brambles the same result for congestion~$2$.
 
-\begin{authorplaceholder}{Lean certificate}
-  We provide a Lean certificate of the proof at \textcolor{red}{[link to be inserted]}.
-  The authors still have to specify the statement that the certificate proves, the version of this manuscript that it certifies, the versions of Lean and Mathlib that check it, and the results of other papers that it assumes without proof.
-\end{authorplaceholder}
+%\begin{authorplaceholder}{Lean certificate}
+%  We provide a Lean certificate of the proof at \textcolor{red}{[link to be inserted]}.
+%  The authors still have to specify the statement that the certificate proves, the version of this %manuscript that it certifies, the versions of Lean and Mathlib that check it, and the results of other %papers that it assumes without proof.
+%\end{authorplaceholder}
+
 \subsection{Paths and cycles of well-linked sets, and the three stages}\label{sec:intro-stages}
 
 In this subsection we describe paths and cycles of well-linked sets, and we state the three stages of our proof.
@@ -377,7 +378,7 @@ That proof first obtains a web, then constructs from it a fence whose end is wel
 We follow the three-stage framework of \textcite{HKMM26a,HKMM26b}.
 Namely, we prove the following polynomial versions of~\cite[Theorem~9.9]{HKMM26a} (Stage~1) and of~\cite[theorems~1.2 and~3.18]{HKMM26b} (Stage~2 and Stage~3, respectively).
 
-\begin{theorem}[Stage~1]\label{thm:intro-stage1}
+\begin{theorem}[Stage~1, simplified]\label{thm:intro-stage1}
   There exists a function $g \colon \NN \times \NN \to \NN$ with $g(w, \ell) = \Ocal(w^{4512} \ell^{5164})$ such that any digraph $D$ with $\dtw(D) \ge g(w, \ell)$ contains a good path of well-linked sets of width $w$ and length $\ell$.
   % Let $w,\ell\ge1$ be integers.
   % There is a number
@@ -387,7 +388,7 @@ Namely, we prove the following polynomial versions of~\cite[Theorem~9.9]{HKMM26a
   % such that every digraph of directed treewidth at least $t_P(w,\ell)$ contains a good path of well-linked sets of width $w$ and length $\ell$.
 \end{theorem}
 
-\begin{theorem}[Stage~2]\label{thm:intro-stage2}
+\begin{theorem}[Stage~2, simplified]\label{thm:intro-stage2}
   There exist two functions $w', \ell' \colon \NN \times \NN \to \NN$ with $w'(w, \ell) = \Ocal(w^{29} \ell^{30})$ and $\ell'(w, \ell) = \Ocal(w^{23} \ell^{24})$ such that any digraph $D$ containing a good path of well-linked sets of width at least $w'(w, \ell)$ and length at least $\ell'(w, \ell)$ contains a cycle of well-linked sets of width $w$ and length $\ell$.
   % There are polynomials $r_2(w,\ell)=\Theta(w^{20}\ell^{20})$, $w_2'(w,\ell)=\Theta(w^{29}\ell^{30})$, and $\ell_2'(w,\ell)=\Theta(w^{23}\ell^{24})$ such that, for all integers $w\ge1$ and $\ell\ge2$, we have $r_2(w,\ell)\le w_2'(w,\ell)$ and the following holds.
   % Let $(\Scal,\Pcal)$ be a path of well-linked sets of width at least $w_2'(w,\ell)$ and length $\ell'\ge\ell_2'(w,\ell)$ in a digraph $D$, with clusters $S_0,\dots,S_{\ell'}$.
@@ -395,7 +396,7 @@ Namely, we prove the following polynomial versions of~\cite[Theorem~9.9]{HKMM26a
   % In particular, if $(\Scal,\Pcal)$ is good, then $D$ contains a cycle of well-linked sets of width $w$ and length $\ell$.
 \end{theorem}
 
-\begin{theorem}[Stage~3]\label{thm:intro-stage3}
+\begin{theorem}[Stage~3, simplified]\label{thm:intro-stage3}
   There exist two functions $w\colon \NN \to \NN$ and $\ell \colon \NN \to \NN$ with $w(k) = \Ocal(k^{20})$ and $\ell(k) = \Ocal(k^{58})$ such that any digraph containing a cycle of well-linked sets of width at least $w(k)$ and length at least $\ell(k)$ contains the cylindrical grid of order $k$ as a butterfly minor.
   % are polynomials $w_3$ and $\ell_3$ with positive leading coefficients, of degrees $20$ and $58$, respectively, such that the following holds for every integer $k\ge2$.
   % The numbers $w_3(k)$ and $\ell_3(k)$ are positive integers with $\ell_3(k)\ge2$, and every cycle of well-linked sets of width at least $w_3(k)$ and length at least $\ell_3(k)$ contains the cylindrical grid $G_k$ as a butterfly minor.
