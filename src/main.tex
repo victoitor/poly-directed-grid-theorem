@@ -231,26 +231,37 @@ pdfauthor={Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, Ignasi S
 \begin{abstract}
   The Directed Grid Theorem of Kawarabayashi and Kreutzer [STOC 2015] states that there is a function $f$ such that every digraph of directed treewidth at least $f(k)$ contains a cylindrical grid of order $k$ as a butterfly minor.
   Their function is not elementary, and Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024] improved it to a tower of exponentials of height $22$, by a proof in three stages through good paths and cycles of well-linked sets.
-  We prove each stage with a polynomial bound, so that $f$ can be chosen to be a polynomial of degree $20\,031\,568$.
-  As a consequence, Younger's conjecture, proved by Reed, Robertson, Seymour, and Thomas, holds with a polynomial bound: for the polynomial $f$ that we construct, every digraph without $k$ pairwise disjoint cycles has a feedback vertex set of size at most $(k-1)f(k)$.
+  In this article we prove each stage with a polynomial bound, so that $f$ can be chosen to be a polynomial of degree $20\,031\,568$.
+  As a consequence, Younger's conjecture, proved by Reed, Robertson, Seymour, and Thomas [Combinatorica, 1996], holds with a polynomial bound: for the polynomial $f$ that we construct, every digraph without $k$ pairwise disjoint cycles has a feedback vertex set of size at most $(k-1)f(k)$.
 \end{abstract}
 %%%%%% end chunks/00-abstract.tex
 
-\noindent{\small\textbf{Keywords.} directed treewidth, cylindrical grid, Directed Grid Theorem, polynomial bound, linkages, cycle of well-linked sets.\par}
+\noindent{\small\textbf{Keywords.} directed treewidth, cylindrical grid, Directed Grid Theorem, polynomial bound, linkages, cycle of well-linked sets, Younger's conjecture, Erdős-Pósa property. \par}
 \label{front:keywords}
-\metadatum{Funding.}{\emph{Victor Campos}: Bolsa de Produtividade em Pesquisa - PQ  (CNPq 310785/2025-1),
-  TAPIOCA - Teoria Aplicada a Problemas Integrando Otimização, Combinatória e Algoritmos (CNPq 404479/2023-5), CAPES / COFECUB 437841/2018-9.\\
-  \emph{Raul Lopes}: HIDSS-0002 DASHH (Data Science in Hamburg - Helmholtz Graduate School for the Structure of Matter).\\
-\emph{Ignasi Sau}: French project ELIT (ANR-20-CE48-0008-01).}
+
+% Funding: one entry per author, all aligned after the label "Funding." (hanging indentation)
+\newlength{\fundingindent}
+\settowidth{\fundingindent}{\small\textbf{Funding.}\enskip}
+\par\bigskip
+{\small\parskip=0pt
+\noindent\hangindent\fundingindent\hangafter1
+\textbf{Funding.}\enskip\emph{Victor Campos}: CNPq (Bolsa de Produtividade em Pesquisa 310785/2025-1 and project TAPIOCA 404479/2023-5) and CAPES/COFECUB (437841/2018-9).\par
+\noindent\hangindent\fundingindent\hangafter0
+\emph{Raul Lopes}: DASHH, Data Science in Hamburg -- Helmholtz Graduate School for the Structure of Matter (HIDSS-0002).\par
+\noindent\hangindent\fundingindent\hangafter0
+\emph{Rodrigo Nogueira}: \textcolor{red}{[to be completed]}.\par
+\noindent\hangindent\fundingindent\hangafter0
+\emph{Ignasi Sau}: French ANR project ELIT (ANR-20-CE48-0008-01).\par}
 \label{front:funding}
 
 \metadatum{Related repository.}{We maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}
 
-\begingroup\small
-\paragraph{Discussion on the use of AI in this article.}\label{front:ai-start} The proof presented in this manuscript was obtained and verified using LLMs (the actual models are irrelevant to this discussion). Because of its length and complexity, we have not yet (humanly) revised the whole proof in full detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write a human-readable proof of this result, which we plan to make available as well.
+\bigskip
 
-In fact, this project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some significant improvements, and at some point we started using LLMs. By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges, and after going through several intermediate results, the eventual proof presented here was found. We admit that most of the ideas of the current proof have been exclusively found by the LLMs, hence we do not claim intellectual merit for it.
-\par\label{front:ai-end}\endgroup
+
+\noindent{\small\textbf{Discussion on the use of AI in this article.}\label{front:ai-start} 
+This project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some improvements, and at some point we started using LLMs (the actual models are irrelevant to this discussion). By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges with the LLMs, and after going through several intermediate results, the eventual proof presented here was found. Because of its length and complexity, we have not yet (humanly) revised the whole proof in detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write a human-readable proof of this result, which we plan to make available as well.
+\par\label{front:ai-end}}
 
 % Contents on a page of its own; sections only, with subsections in the PDF bookmarks.
 \clearpage
@@ -8034,7 +8045,7 @@ We now state the main result of this section.
     w_3(k)=W(11k^2),\qquad\ell_3(k)=C(11k^2)+1,
   \end{equation}
   where $W$ and $C$ are the polynomials of \zcref{lem:anchored-grid}.
-  Then $w_3$ and $\ell_3$ are polynomials in $k$ with positive leading coefficients, of degrees $20$ and $58$, respectively, and for every integer $k\ge2$, the numbers $w_3(k)$ and $\ell_3(k)$ are positive integers with $\ell_3(k)\ge2$.
+  Then $w_3$ and $\ell_3$ are polynomials in $k$ of degrees $20$ and $58$, respectively, and for every integer $k\ge2$, the numbers $w_3(k)$ and $\ell_3(k)$ are positive integers with $\ell_3(k)\ge2$.
   If $D$ contains a cycle of well-linked sets of width at least $w_3(k)$ and length at least $\ell_3(k)$, then the union of this cycle, and hence $D$, contains the cylindrical grid $G_k$ as a butterfly minor (see \zcref{def:wl-cycle,def:cyl-grid,def:butterfly}).
 \end{theorem}
 
@@ -8603,7 +8614,7 @@ In the proof below, the paths of a given linkage in each active cluster serve as
   Then $D(\Scal,\Pcal)$ contains an acyclic grid of size $K$ rooted in $(\Scal,\Pcal)$.
 \end{lemma}
 
-We remark that $w_K$ and $q_K$ are polynomials in $K$ with positive leading coefficients, of degrees $4$ and $2$, respectively.
+We remark that $w_K$ and $q_K$ are polynomials in $K$ of degrees $4$ and $2$, respectively.
 Moreover, for $K\ge2$, we have $w_K\ge K^2\ge2K$.
 
 \begin{proof}[Proof of \zcref{lem:s3-assembly}]
@@ -9431,7 +9442,7 @@ In the proof of the next lemma, we prepare the buffer blocks and the active bloc
   \[
     W(K)=(N-1)^2+1,\qquad C(K)=(q+1)\ell_B+q\ell_A+2q.
   \]
-  Then $W$ and $C$ are polynomials in $K$ with positive leading coefficients, of degrees $10$ and $29$, respectively, and their values at integers $K\ge2$ are positive integers with $C(K)\ge K$.
+  Then $W$ and $C$ are polynomials in $K$ of degrees $10$ and $29$, respectively, and their values at integers $K\ge2$ are positive integers with $C(K)\ge K$.
   Moreover, every path of well-linked sets of width at least $W(K)$ with at least $C(K)$ clusters contains an acyclic grid of size $K$ rooted in it (see \zcref{def:s3-grid}).
 \end{lemma}
 
@@ -9829,7 +9840,7 @@ In the increasing case, suitable staircase paths in the grid close individually 
   Let $K=11k^2$ and $q=4k^2$.
   We first verify the claims about $w_3$ and $\ell_3$.
   Since $K=11k^2\ge2$, \zcref{lem:anchored-grid} applies with this value of $K$.
-  By its claims about $W$ and $C$, the polynomials $w_3$ and $\ell_3$ have the stated degrees $20$ and $58$ and positive leading coefficients, and their values are positive integers with $\ell_3(k)=C(K)+1\ge K+1\ge2$.
+  By its claims about $W$ and $C$, the polynomials $w_3$ and $\ell_3$ have the stated degrees $20$ and $58$, and their values are positive integers with $\ell_3(k)=C(K)+1\ge K+1\ge2$.
 
   Now let $(\Scal,\Pcal)$ be the given cycle of well-linked sets, with clusters $S_0,\dots,S_{\ell-1}$.
   We reserve $S_0$ for the final return.
@@ -9869,20 +9880,19 @@ Let $p$ be the bound of \zcref{cor:stage1} on $t_P(w,\ell)$ at $w=w'(k)$ and $\e
 We now compute the degrees of $w'$, $\ell'$, and $p$, and we check that their values at integers $k\ge2$ are positive integers.
 
 \begin{lemma}\label{lem:pk-degree}
-  The polynomials $w'$, $\ell'$, and $p$ have positive leading coefficients and degrees $2\,320$, $1\,852$, and $20\,031\,568$, respectively.
+  The polynomials $w'$, $\ell'$, and $p$ have degrees $2\,320$, $1\,852$, and $20\,031\,568$, respectively.
   Moreover, for every integer $k\ge2$, the numbers $w'(k)$, $\ell'(k)$, and $p(k)$ are positive integers.
 \end{lemma}
 
 \begin{proof}
-  By \zcref{thm:stage3}, the polynomials $w_3$ and $\ell_3$ have positive leading coefficients and degrees $\deg w_3=20$ and $\deg\ell_3=58$.
+  By \zcref{thm:stage3}, the polynomials $w_3$ and $\ell_3$ have degrees $\deg w_3=20$ and $\deg\ell_3=58$.
   Note that the degree of a product is the sum of the degrees of its factors, that taking a power multiplies the degree by the exponent, and that adding a constant does not change a positive degree.
   Hence, by~\eqref{eq:main-wl} and~\eqref{eq:pk}, we have
   \begin{align*}
     \deg w'&=29\cdot20+30\cdot58=2\,320,\\
     \deg\ell'&=23\cdot20+24\cdot58=1\,852,\\
-    \deg p&=4512\cdot2\,320+(2100+3064)\cdot1\,852=20\,031\,568,
+    \deg p&=4512\cdot2\,320+(2100+3064)\cdot1\,852=20\,031\,568.
   \end{align*}
-  and the leading coefficients of $w'$, $\ell'$, and $p$ are positive.
   Finally, let $k\ge2$ be an integer.
   By \zcref{thm:stage3}, the numbers $w_3(k)$ and $\ell_3(k)$ are positive integers.
   Therefore, by~\eqref{eq:main-wl} and~\eqref{eq:pk}, the numbers $w'(k)$, $\ell'(k)$, and $p(k)$ are positive integers, as desired.
@@ -9891,7 +9901,7 @@ We now compute the degrees of $w'$, $\ell'$, and $p$, and we check that their va
 We are now ready to prove \zcref{thm:grid-main}.
 
 \begin{proof}[Proof of \zcref{thm:grid-main}]
-  By \zcref{lem:pk-degree}, the polynomial $p$ defined in~\eqref{eq:pk} has degree $20\,031\,568$ and a positive leading coefficient.
+  By \zcref{lem:pk-degree}, the polynomial $p$ defined in~\eqref{eq:pk} has degree $20\,031\,568$.
   Let $k\ge2$ be an integer, and let $D$ be a digraph with $\dtw(D)\ge p(k)$.
   We let $w=w_3(k)$ and $\ell=\ell_3(k)$, which are positive integers with $\ell\ge2$ by \zcref{thm:stage3}.
   By \zcref{cor:stage1,rem:closing-size}, by~\eqref{eq:stage2-ell2bound}, and by the definitions~\eqref{eq:main-wl} and~\eqref{eq:pk}, the thresholds of Stage~1 and Stage~2 satisfy
@@ -9989,7 +9999,7 @@ We can now prove our polynomial bound for Younger's conjecture.
 \begin{corollary}[Younger's conjecture with a polynomial bound]\label{cor:younger}
   Let $k\ge1$ be an integer.
   Every digraph $D$ that does not contain $k$ pairwise disjoint cycles satisfies $\tau(D)\le(k-1)\,p(k)$.
-  Consequently, $\tau(D)\le\nu(D)\,p\bigl(\nu(D)+1\bigr)$ for every digraph $D$, where $n\mapsto n\,p(n+1)$ is a polynomial of degree $20\,031\,569$ with positive leading coefficient.
+  Consequently, $\tau(D)\le\nu(D)\,p\bigl(\nu(D)+1\bigr)$ for every digraph $D$, where $n\mapsto n\,p(n+1)$ is a polynomial of degree $20\,031\,569$.
 \end{corollary}
 
 \begin{proof}
@@ -10003,8 +10013,8 @@ We can now prove our polynomial bound for Younger's conjecture.
     \tau(D)\le\bigl(\dtw(D)+1\bigr)\nu(D)\le(k-1)p(k).
   \]
   Taking $k=\nu(D)+1$ in the first assertion, we obtain $\tau(D)\le\nu(D)\,p\bigl(\nu(D)+1\bigr)$ for every digraph $D$.
-  Finally, the polynomial $n\mapsto p(n+1)$ has the same degree and leading coefficient as $p$, and multiplying it by $n$ raises its degree by one without changing its leading coefficient.
-  Hence, by \zcref{lem:pk-degree}, $n\mapsto n\,p(n+1)$ is a polynomial of degree $20\,031\,569$ with positive leading coefficient, as desired.
+  Finally, the polynomial $n\mapsto p(n+1)$ has the same degree as $p$, and multiplying it by $n$ raises its degree by one.
+  Hence, by \zcref{lem:pk-degree}, $n\mapsto n\,p(n+1)$ is a polynomial of degree $20\,031\,569$, as desired.
 \end{proof}
 %%%%%% end chunks/13-main.tex
 
