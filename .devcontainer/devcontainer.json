@@ -1,0 +1,63 @@
+{
+	"build": {
+		"dockerfile": "Containerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": false,
+			"installOhMyZsh": false,
+			"installOhMyZshConfig": false
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"ppa": "false"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "make, tex-fmt, chktex, texlive-latex-extra, latexmk, texlive-bibtex-extra, texlive-lang-english, texlive-science, biber, lmodern"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.formatOnSave": true,
+				"latex-workshop.bibtex-format.sort.enabled": true,
+				"latex-workshop.bibtex-fields.order": [
+					"title",
+					"author"
+				],
+				"terminal.integrated.suggest.enabled": false,
+				"latex-workshop.bibtex-format.trailingComma": true,
+				"latex-workshop.bibtex-fields.sort.enabled": true,
+				"ltex.bibtex.fields": {
+					"issn": false,
+					"title": false,
+					"booktitle": false,
+					"eventtitle": false,
+					"eventtitleaddon": false,
+					"booktitleaddon": false,
+					"series": false,
+					"journaltitle": false
+				},
+				"latex-workshop.format.fixQuotes.enabled": true,
+				"latex-workshop.formatting.latex": "tex-fmt",
+				"latex-workshop.intellisense.citation.backend": "biblatex",
+				"latex-workshop.latex.autoBuild.run": "onSave",
+				"latex-workshop.linting.chktex.enabled": true,
+				"latex-workshop.synctex.afterBuild.enabled": true
+			}
+		},
+		"extensions": [
+			"James-Yu.latex-workshop",
+			"github.vscode-pull-request-github",
+			"ltex-plus.vscode-ltex-plus",
+			"yzhang.markdown-all-in-one"
+		]
+	},
+	// // Para podman com SELinux
+	// "securityOpt": [
+	// 	"label=disable"
+	// ],
+	// "remoteEnv": {
+	// 	"PODMAN_USERNS": "keep-id"
+	// },
+	"remoteUser": "dev"
+}
