@@ -3433,9 +3433,10 @@ We remark that, in~\cite[Section~9.6c]{Schrijver03}, a set $X$ is said to be lin
 
 We use the following elementary facts by name, without stating them as propositions:
 \begin{itemize}
-  \item the union bound, the law of total probability, linearity of expectation, and the fact that events determined by disjoint sets of independent random choices are mutually independent;
-  \item the Cauchy--Schwarz inequality;
-  \item the binomial theorem;
+  % (red: references added on 2026-11-25 at the owner's request; locations checked in the books, see LOG.md)
+  \item the union bound, the law of total probability, linearity of expectation, and the fact that events determined by disjoint sets of independent random choices are mutually independent\textcolor{red}{ (see e.g.~\cite[Lemma~1.2, Theorem~1.6, and Theorem~2.1]{MitzenmacherU05} and the Mutual Independence Principle in~\cite[Section~4.1]{MolloyR02})};
+  \item the Cauchy--Schwarz inequality\textcolor{red}{ (see e.g.~\cite[Chapter~1]{Steele04})};
+  \item the binomial theorem\textcolor{red}{ (see e.g.~\cite[Equation~(5.12)]{GrahamKP94})};
   \item the fact that every permutation $\pi$ of $[n]$ is a product of at most $n(n-1)/2$ \emph{adjacent transpositions}, that is, transpositions of two consecutive integers, since the least number of such factors is the number of pairs $c<c'$ with $\pi(c)>\pi(c')$ (see e.g.~\textcite[Proposition~1.5.2]{BjornerBrenti05});
   \item the fact that every acyclic digraph has a \emph{topological order}, that is, an injective numbering of its vertices that increases along every arc (see e.g.~\cite[Proposition~1.4.3]{BangJensenG02}); and
   \item the fact that the strong components of a digraph can be ordered so that every arc between two distinct strong components goes from an earlier one to a later one (see e.g.~\cite[Section~1.5]{BangJensenG02}).
