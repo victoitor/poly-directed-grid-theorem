@@ -287,7 +287,7 @@ This project started with a ``human work'' of the authors trying to improve the 
 
 The Grid Theorem of \textcite{RobertsonSeymour86} states that every graph of sufficiently large treewidth contains a large grid as a minor (see also the book of \textcite[Chapter~12]{Diestel17}).
 % (red: intermediate and very recent bounds, added on 2026-11-25 after Rodrigo's comment; to be approved)
-\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid\textcolor{red}{, improving on the exponential bounds of~\cite{RST94,DJGT99,KawarabayashiK20,LeafS15}}, and \textcite{CT21} subsequently improved it\textcolor{red}{, after the intermediate bounds of~\cite{Chuzhoy15,Chuzhoy16},} to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid\textcolor{red}{; very recently, Bonnet~\cite{Bonnet26} and \textcite{Hajiaghayi26} announced the bounds $\mathcal{O}(k^8\operatorname{polylog}k)$ and $\mathcal{O}(k^6\operatorname{polylog}k)$, respectively, which are not published yet}.
+\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid\textcolor{red}{, improving on the exponential bounds of~\cite{RST94,DJGT99,KawarabayashiK20,LeafS15}}, and \textcite{CT21} subsequently improved it\textcolor{red}{, after the intermediate bounds of~\cite{Chuzhoy15,Chuzhoy16},} to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid\textcolor{red}{; very recently, \textcite{Bonnet26} and \textcite{Hajiaghayi26} announced the bounds $\mathcal{O}(k^8\operatorname{polylog}k)$ and $\mathcal{O}(k^6\operatorname{polylog}k)$, respectively, which are not published yet}.
 
 For digraphs, \textcite{Johnson2001} introduced directed treewidth (see \zcref{def:dtw}), a concept that was also proposed by \textcite{Reed99}.
 The directed-grid conjecture is the analogue of the Grid Theorem for digraphs, with directed treewidth, cylindrical grids, and butterfly minors in place of treewidth, grids, and minors, respectively (see \zcref{def:cyl-grid,def:butterfly}).
@@ -332,7 +332,7 @@ The first elementary bound is due to \textcite{HKMM24}, and in the full version~
 \[
   \tau(D)\le\nu(D)\,\textcolor{red}{f}\bigl(\nu(D)+1\bigr),
 \]
-\textcolor{red}{where $f$ is a function as in \zcref{thm:grid-main}; this is a polynomial bound of order $\mathcal{O}\bigl(\nu(D)^{20\,031\,569}\bigr)$} (see \zcref{cor:younger}).
+\textcolor{red}{where $f$ is the function defined in \zcref{thm:grid-main}; this is a polynomial bound of order $\mathcal{O}\bigl(\nu(D)^{20\,031\,569}\bigr)$}; see \zcref{cor:younger}.
 We deduce this inequality from \zcref{thm:grid-main} and the cycle-packing inequality $\tau(D)\le(\dtw(D)+1)\nu(D)$ of \textcite[conference version, Lemma~3]{MMPRS22}, which we reprove in \zcref{prop:cycle-packing}.
 
 For relaxed packings, polynomial bounds were already known.
