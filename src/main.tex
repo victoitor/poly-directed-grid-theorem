@@ -591,12 +591,21 @@ We prove this theorem by counting, with polynomial bounds.
 By contrast, in~\cite{HKMM26a}, a web is first ordered into a split or a segmentation, as in~\cite[Lemma~5.15]{KawarabayashiK15}, with a doubly exponential bound.
 Paths of well-linked sets are then extracted with exponential bounds (see the comparison after \zcref{thm:density}).
 
+% (red: credit to the temporal digraphs of Hatzel et al., requested by the owner on 2026-11-25; to be approved.
+%  Checked in the sources of arXiv:2404.19222v3, Sections 4.3, 6, 9, and arXiv:2602.11716v1, Section 3.1.)
+\textcolor{red}{The idea of ordering the meetings of two linkages in time is already present in the work of \textcite{HKMM26a}, who introduced a framework based on temporal digraphs in order to construct paths of order-linked and of well-linked sets (see~\cite[sections~6 and~9]{HKMM26a} and~\cite[Section~3.1]{HKMM26b}).
+In an ordered web~\cite[Definition~9.1]{HKMM26a}, every path of one linkage meets the paths of the other linkage in a common order.
+Numbering the paths of the second linkage in this order gives a time on the union of the two linkages that never decreases along the first linkage and is constant along each path of the second one, that is, a clock in the above sense.
+The layers of the routing temporal digraph~\cite[Definition~6.3]{HKMM26a} are the steps of this time, and temporal walks~\cite[Definition~6.2]{HKMM26a} move forward in it.
+Our clocks extend this idea: time may also change along the second linkage, and we obtain it directly from minimality, from distances, or from acyclicity, with polynomial bounds, whereas in~\cite{HKMM26a} the order comes from a split or a segmentation, as explained above.}
+
 % Keep the highlighted box on one page (the overview is \raggedbottom, so a break only leaves white space).
 \needspace{10\baselineskip}
 \begin{simplestatement}[From a topological order to a system of clocks]
   Before this paper, we were working on an earlier, unpublished manuscript that obtained a polynomial bound for Younger's conjecture.
   A key step of its proof was clock-based, and this clock came from acyclicity: it was a topological order of an acyclic digraph that contains the two linkages whose meetings it orders.
-  The idea of a clock for the Directed Grid Theorem came from us after we obtained this clock-based proof.
+  % old (replaced on 2026-11-25, credit to the temporal digraphs of HKMM26a): The idea of a clock for the Directed Grid Theorem came from us after we obtained this clock-based proof.
+  \textcolor{red}{Our clocks for the Directed Grid Theorem grew out of this clock-based proof.}
   For the main result of this paper, the clock is a much more sophisticated system: three clocks, obtained from minimality, from distances, and from acyclicity, feed one density theorem.
 \end{simplestatement}
 
@@ -642,10 +651,13 @@ In undirected graphs, \textcite[(3.2) and the proof of~(3.1)]{LeafS15} used the 
 As they note, the existence of this sequence is essentially a result of \textcite[(12.1)]{RobertsonS-GMXXI}.
 Such a linkage also gives a vertex order in which every prefix is separated from the rest by one vertex of each path.
 \textcite[Lemma~4.6]{CT21} stated this order as a result of \textcite{RobertsonS83}, and noted that it follows from the proof of~\cite[Lemma~2.5]{RobertsonS83}, although that lemma is stated in a weaker form.
-An order in time also underlies the routing temporal digraphs of~\cite[Definition~6.3]{HKMM26a}, in which a linkage passes through pairwise disjoint subgraphs in a common order.
-Windowed webs describe this setting (see \zcref{sec:chains}).
+% old (replaced on 2026-11-25; the credit to HKMM26a is now given above, after the first paragraph of this subsection):
+% An order in time also underlies the routing temporal digraphs of~\cite[Definition~6.3]{HKMM26a}, in which a linkage passes through pairwise disjoint subgraphs in a common order.
+% Windowed webs describe this setting (see \zcref{sec:chains}).
+% In undirected graphs, the pregrills of~\cite[Section~2]{LeafS15} are a close analogue.
+% In both settings, however, the order is given by the subgraphs, whereas a clock is defined on the union of the two linkages before any windows are chosen.
+\textcolor{red}{Our windowed webs (see \zcref{sec:chains}) describe the setting of the routing temporal digraphs of~\cite[Definition~6.3]{HKMM26a}, in which a linkage passes through pairwise disjoint subgraphs in a common order.}
 In undirected graphs, the pregrills of~\cite[Section~2]{LeafS15} are a close analogue.
-In both settings, however, the order is given by the subgraphs, whereas a clock is defined on the union of the two linkages before any windows are chosen.
 \subsection{The objects and the map}\label{sec:ov-notions}
 
 In this subsection we describe the objects that the steps below handle, and we give a map of the proof.
