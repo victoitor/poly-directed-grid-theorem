@@ -319,8 +319,6 @@ In this paper we show that $f$ can be chosen to be a polynomial, by proving the 
   % is a polynomial $p$ of degree $20\,031\,568$ with positive leading coefficient, defined in~\eqref{eq:pk}, such that, for every integer $k\ge2$, every digraph $D$ with directed treewidth $\dtw(D)\ge p(k)$ contains the cylindrical grid $G_k$ of order $k$ as a butterfly minor.
 \end{theorem}
 
-% (red: defines p, used below in the intro; added on 2026-11-25, to be approved)
-\textcolor{red}{More precisely, our proof shows that, for every integer $k\ge2$, we can take $f(k)=p(k)$, where $p$ is the explicit polynomial of degree $20\,031\,568$ defined in~\eqref{eq:pk} (see \zcref{lem:pk-degree}).}
 We remark that our goal was to obtain a polynomial bound, and we made no attempt to optimize its degree.
 The best known lower bound for the function $f$ is $f(k)=\Omega(k^2\log k)$.
 This follows from the undirected lower bound of \textcite{RST94}, by replacing each edge by two opposite arcs (see \zcref{prop:grid-lower-bound}).
@@ -330,10 +328,11 @@ We now turn to Younger's conjecture~\cite{Younger73}.
 It concerns the maximum number $\nu(D)$ of disjoint cycles in a digraph $D$ and the minimum size $\tau(D)$ of a feedback vertex set of $D$ (see \zcref{def:nu-tau}), and it asserts that $\tau(D)$ is bounded from above by a function of $\nu(D)$.
 \textcite{ReedRST96} proved this conjecture with a bound that is not elementary.
 The first elementary bound is due to \textcite{HKMM24}, and in the full version~\cite{HKMM26a} of their article it is a tower of exponentials of height~$8$. In~\cite[Question~10.1]{HKMM26a}, the authors asked whether a polynomial bound exists. We answer this question affirmatively by showing that every digraph $D$ satisfies
+% (red: f of thm:grid-main instead of p, which is only defined in eq:pk; added on 2026-11-25, to be approved)
 \[
-  \tau(D)\le\nu(D)\,p\bigl(\nu(D)+1\bigr),
+  \tau(D)\le\nu(D)\,\textcolor{red}{f}\bigl(\nu(D)+1\bigr),
 \]
-which is a polynomial bound of degree $20\,031\,569$ (see \zcref{cor:younger}).
+\textcolor{red}{where $f$ is a function as in \zcref{thm:grid-main}; this is a polynomial bound of order $\mathcal{O}\bigl(\nu(D)^{20\,031\,569}\bigr)$} (see \zcref{cor:younger}).
 We deduce this inequality from \zcref{thm:grid-main} and the cycle-packing inequality $\tau(D)\le(\dtw(D)+1)\nu(D)$ of \textcite[conference version, Lemma~3]{MMPRS22}, which we reprove in \zcref{prop:cycle-packing}.
 
 For relaxed packings, polynomial bounds were already known.
@@ -345,7 +344,7 @@ Beyond cycles, we also obtain polynomial packing-covering bounds for every fixed
 To this end, we repeat with \zcref{thm:grid-main} the deduction that \textcite{AKKW16} made from the Directed Grid Theorem, in the quantitative form of~\cite[Theorem~1.6]{HKMM26b}.
 
 Our result also has algorithmic consequences, through the usual alternative between large and small directed treewidth.
-For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+p(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$ (see \zcref{thm:long-cycle-algorithm}).
+For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+\textcolor{red}{f}(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$ (see \zcref{thm:long-cycle-algorithm}).
 Indeed, we try every family of $k$ disjoint paths with $\ell$ vertices each, and we delete their inner vertices.
 If the remaining digraph contains a cylindrical grid of order $r$ as a butterfly minor, then the input digraph contains the desired cycles.
 Otherwise, we find an arboreal decomposition of the remaining digraph of width bounded by a polynomial in $k+\ell$, and we use it in a linkage algorithm that decides whether the paths of the family can be closed into cycles.
