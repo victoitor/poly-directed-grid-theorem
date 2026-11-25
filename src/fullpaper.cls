@@ -302,10 +302,10 @@ fill=yellow!50}}
     \@author\par
     \ifx\@date\@empty\else\vskip 0.6em{\@date}\par\fi
   \endgroup
-  \vskip 0.8em%
-  \fp@titlerule
-
-  \par\vskip 0.5em}
+  % the rule follows the affiliations closely: \nointerlineskip drops the baselineskip glue above it
+  \par\nointerlineskip\vskip 0.6em%
+  \fp@titlerule\par
+  \vskip 0.5em}
 
 \let\fp@maketitle\maketitle
 \renewcommand{\maketitle}{%
@@ -325,8 +325,8 @@ fill=yellow!50}}
 
 \renewenvironment{abstract}{%
   \par\vskip 0.3em
-  \noindent{\fp@label\abstractname}%
-  \par\nobreak\vskip 0.25em
+  {\centering\fp@label\abstractname\par}% centered heading
+  \nobreak\vskip 0.25em
   \begingroup\small\noindent\ignorespaces
 }{%
   \par\endgroup\vskip 0.4em}

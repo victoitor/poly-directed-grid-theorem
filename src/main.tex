@@ -250,7 +250,7 @@ pdfauthor={Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, Ignasi S
 \frontgap
 % framed paragraph: \fbox around a \parbox of the full text width, without a line number for the box
 \nolinenumbers
-{\setlength{\fboxsep}{8pt}%
+{\setlength{\fboxsep}{6pt}%
 \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\small\textbf{Discussion on the use of AI in this paper.}\label{front:ai-start}
 This project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some improvements, and at some point we started using LLMs (the actual models are irrelevant to this discussion). By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges with the LLMs, and after going through several intermediate results, the eventual proof presented here was found. Because of its length and complexity, we have not yet (humanly) revised the whole proof in detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write ``human-friendly'' proofs of the results in this paper.
 \par\label{front:ai-end}}}}
@@ -289,8 +289,7 @@ This project started with a ``human work'' of the authors trying to improve the 
 \section{Introduction}\label{sec:intro}
 
 The Grid Theorem of \textcite{RobertsonSeymour86} states that every graph of sufficiently large treewidth contains a large grid as a minor (see also the book of \textcite[Chapter~12]{Diestel17}).
-% (red: intermediate and very recent bounds, added on 2026-11-25 after Rodrigo's comment; to be approved)
-\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid\textcolor{red}{, improving on the exponential bounds of~\cite{RST94,DJGT99,KawarabayashiK20,LeafS15}}, and \textcite{CT21} subsequently improved it\textcolor{red}{, after the intermediate bounds of~\cite{Chuzhoy15,Chuzhoy16},} to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid\textcolor{red}{; very recently, \textcite{Bonnet26} and \textcite{Hajiaghayi26} announced the bounds $\mathcal{O}(k^8\operatorname{polylog}k)$ and $\mathcal{O}(k^6\operatorname{polylog}k)$, respectively, which are not published yet}.
+\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid, improving on the exponential bounds of~\cite{RST94,DJGT99,KawarabayashiK20,LeafS15}, and \textcite{CT21} subsequently improved it, after the intermediate bounds of~\cite{Chuzhoy15,Chuzhoy16}, to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid; very recently, \textcite{Bonnet26} and \textcite{Hajiaghayi26} announced the bounds $\mathcal{O}(k^8\operatorname{polylog}k)$ and $\mathcal{O}(k^6\operatorname{polylog}k)$, respectively, which are not published yet.
 
 For digraphs, \textcite{Johnson2001} introduced directed treewidth (see \zcref{def:dtw}), a concept that was also proposed by \textcite{Reed99}.
 The directed-grid conjecture is the analogue of the Grid Theorem for digraphs, with directed treewidth, cylindrical grids, and butterfly minors in place of treewidth, grids, and minors, respectively (see \zcref{def:cyl-grid,def:butterfly}).
@@ -329,14 +328,12 @@ By a remark of \textcite[Section~6]{HKMM26b}, \zcref{thm:grid-main} also answers
 
 We now turn to Younger's conjecture~\cite{Younger73}.
 It concerns the maximum number $\nu(D)$ of disjoint cycles in a digraph $D$ and the minimum size $\tau(D)$ of a feedback vertex set of $D$ (see \zcref{def:nu-tau}), and it asserts that $\tau(D)$ is bounded from above by a function of $\nu(D)$.
-% (red: special cases and variants of Younger's conjecture, after Rodrigo's comment; added on 2026-11-25, to be approved)
-\textcite{ReedRST96} proved this conjecture with a bound that is not elementary\textcolor{red}{ (see~\cite{McCuaig93,ReedS96,GoemansW98,GueninT11,SchlombergTV25,BessyBKSSTZ21,AKKW16,Seymour95,LucchesiY78,Seymour96} for results on particular cases and variants of this conjecture)}.
+\textcite{ReedRST96} proved this conjecture with a bound that is not elementary (see~\cite{McCuaig93,ReedS96,GoemansW98,GueninT11,SchlombergTV25,BessyBKSSTZ21,AKKW16,Seymour95,LucchesiY78,Seymour96} for results on particular cases and variants of this conjecture).
 The first elementary bound is due to \textcite{HKMM24}, and in the full version~\cite{HKMM26a} of their article it is a tower of exponentials of height~$8$. In~\cite[Question~10.1]{HKMM26a}, the authors asked whether a polynomial bound exists. We answer this question affirmatively by showing that every digraph $D$ satisfies
-% (red: f of thm:grid-main instead of p, which is only defined in eq:pk; added on 2026-11-25, to be approved)
 \[
-  \tau(D)\le\nu(D)\,\textcolor{red}{f}\bigl(\nu(D)+1\bigr),
+  \tau(D)\le\nu(D)\,f\bigl(\nu(D)+1\bigr),
 \]
-\textcolor{red}{where $f$ is the function defined in \zcref{thm:grid-main}. This is a polynomial bound of order $\mathcal{O}\bigl(\nu(D)^{20\,031\,569}\bigr)$}; see \zcref{cor:younger}.
+where $f$ is the function defined in \zcref{thm:grid-main}. This is a polynomial bound of order $\mathcal{O}\bigl(\nu(D)^{20\,031\,569}\bigr)$; see \zcref{cor:younger}.
 We deduce this inequality from \zcref{thm:grid-main} and the cycle-packing inequality $\tau(D)\le(\dtw(D)+1)\nu(D)$ of \textcite[conference version, Lemma~3]{MMPRS22}, which we reprove for completeness in \zcref{prop:cycle-packing}.
 
 For relaxed packings, polynomial bounds were already known.
@@ -349,7 +346,7 @@ Note that their result concerns arc-disjoint cycles in Eulerian digraphs, wherea
 Beyond cycles, in fact our results yield polynomial packing-covering bounds for every fixed strongly connected digraph that is a butterfly minor of a cylindrical grid (see \zcref{cor:strong-pattern}).
 To this end, we repeat with \zcref{thm:grid-main} the deduction that \textcite{AKKW16} made from the Directed Grid Theorem, in the quantitative form of~\cite[Theorem~1.6]{HKMM26b}.
 
-Our result also has algorithmic consequences, through the typical win-win approach according to large and small directed treewidth. For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+\textcolor{red}{f}(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$  and $f$ is the function defined in \zcref{thm:grid-main} (see \zcref{thm:long-cycle-algorithm}).
+Our result also has algorithmic consequences, through the typical win-win approach according to large and small directed treewidth. For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+f(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$  and $f$ is the function defined in \zcref{thm:grid-main} (see \zcref{thm:long-cycle-algorithm}).
 Indeed, we try every family of $k$ disjoint paths with $\ell$ vertices each, and we delete their inner vertices.
 If the remaining digraph contains a cylindrical grid of order $r$ as a butterfly minor, then the input digraph contains the desired cycles.
 Otherwise, we find an arboreal decomposition of the remaining digraph of width bounded by a polynomial in $k+\ell$, and we use it in a linkage algorithm that decides whether the paths of the family can be closed into cycles.
@@ -421,13 +418,12 @@ To compose the three stages, we choose the parameters backward from the order of
 Namely, Stage~3 fixes the width and the length of the cycle of well-linked sets, Stage~2 those of the good path, and Stage~1 the directed treewidth.
 We carry out this composition in \zcref{sec:main}, and we present the degree calculation in \zcref{step:count}.
 
-% (red: after Rodrigo's comment on the costs of the three stages; added on 2026-11-25, to be approved)
-\textcolor{red}{Stage~1 is by far the most costly of the three stages: the bounds of Stages~2 and~3 are moderate, and the exponent $20\,031\,568$ in \zcref{thm:grid-main} comes mainly from the exponents of Stage~1.
-Stage~1 is also where most of the new ideas of this paper are needed, such as the clocks (see \zcref{sec:ov-clock}).}
+Stage~1 is by far the most costly of the three stages: the bounds of Stages~2 and~3 are moderate, and the exponent $20\,031\,568$ in \zcref{thm:grid-main} comes mainly from the exponents of Stage~1.
+Stage~1 is also where most of the new ideas of this paper are needed, such as the clocks (see \zcref{sec:ov-clock}).
 
 \subsection{What the proof uses}\label{sec:intro-uses}
 
-Besides elementary facts and textbook results, such as Menger's Theorem (see \zcref{prop:menger}), linear-programming duality, the Gallai--Roy--Vitaver Theorem\textcolor{red}{~\cite{Gallai68,Roy67,Vitaver62} (see \zcref{prop:grv})}, and greedy coloring (see \zcref{sec:prelim-textbook}), we use the following results of other papers.
+Besides elementary facts and textbook results, such as Menger's Theorem (see \zcref{prop:menger}), linear-programming duality, the Gallai--Roy--Vitaver Theorem~\cite{Gallai68,Roy67,Vitaver62} (see \zcref{prop:grv}), and greedy coloring (see \zcref{sec:prelim-textbook}), we use the following results of other papers.
 We state each of them as a proposition, with its exact source and without proof, where it is first needed.
 \begin{itemize}
   \item The Lov\'asz Local Lemma, which goes back to \textcite{ErdosLovasz75}, in a symmetric form (see \zcref{prop:lll}).
@@ -442,7 +438,7 @@ We state each of them as a proposition, with its exact source and without proof,
   \item For the algorithms in \zcref{sec:algorithms}, the width test of~\cite[Theorem~2.19]{CLMS22} together with the haven bound~\cite[(3.1)]{Johnson2001}, and the linkage algorithm of~\cite[(4.8)]{Johnson2001}, with the corrections of its addendum~\cite{JRSTadd} (see \zcref{prop:clms-width-test,prop:haven-dtw,prop:jrst-linkage}).
 \end{itemize}
 Following the proof of~\cite[Lemma~4.2]{AKKW16}, we reprove the cycle-packing inequality $\tau(D)\le(\dtw(D)+1)\nu(D)$ of~\cite[conference version, Lemma~3]{MMPRS22} (see \zcref{prop:cycle-packing}), which we use in \zcref{cor:younger}.
-We also \textcolor{red}{adapt} some further results of~\cite{HKMM26a,HKMM26b} \textcolor{red}{to} the form that we need.
+We also adapt some further results of~\cite{HKMM26a,HKMM26b} to the form that we need.
 Namely, \zcref{lem:spaced-routing}, on routing between spaced terminal sets, is case~(N4) of~\cite[Lemma~8.8]{HKMM26a}, restricted to paths of well-linked sets in normal form and to at most as many terminals as their width.
 Moreover, \zcref{lem:s3-walks} is the temporal reachability lemma of~\cite[Lemma~6.18]{HKMM26a}, stated for reference paths and written with waits.
 Similarly, \zcref{lem:reroute-exists,lem:normalize} extend the observation after~\cite[Definition~2.3]{HKMM26a} and~\cite[Observation~8.9]{HKMM26a}, respectively, and case~\zcref[noname]{item:close-rows-a} of \zcref{lem:close-rows} is the situation of~\cite[Lemma~4.2]{HKMM26b}.
@@ -594,19 +590,17 @@ We prove this theorem by counting, with polynomial bounds.
 By contrast, in~\cite{HKMM26a}, a web is first ordered into a split or a segmentation, as in~\cite[Lemma~5.15]{KawarabayashiK15}, with a doubly exponential bound.
 Paths of well-linked sets are then extracted with exponential bounds (see the comparison after \zcref{thm:density}).
 
-% (red: credit to the temporal digraphs of Hatzel et al., requested by the owner on 2026-11-25; to be approved.
-%  Checked in the sources of arXiv:2404.19222v3, Sections 4.3, 6, 9, and arXiv:2602.11716v1, Section 3.1.)
-\textcolor{red}{The idea of ordering the meetings of two linkages in time is already present in the work of \textcite{HKMM26a}, who introduced a framework based on temporal digraphs in order to construct paths of order-linked and of well-linked sets (see~\cite[sections~6 and~9]{HKMM26a} and~\cite[Section~3.1]{HKMM26b}).
+The idea of ordering the meetings of two linkages in time is already present in the work of \textcite{HKMM26a}, who introduced a framework based on temporal digraphs in order to construct paths of order-linked and of well-linked sets (see~\cite[sections~6 and~9]{HKMM26a} and~\cite[Section~3.1]{HKMM26b}).
 In an ordered web~\cite[Definition~9.1]{HKMM26a}, every path of one linkage meets the paths of the other linkage in a common order.
 Numbering the paths of the second linkage in this order gives a time on the union of the two linkages that never decreases along the first linkage and is constant along each path of the second one, that is, a clock in the above sense.
 The layers of the routing temporal digraph~\cite[Definition~6.3]{HKMM26a} are the steps of this time, and temporal walks~\cite[Definition~6.2]{HKMM26a} move forward in it.
-Our clocks extend this idea: time may also change along the second linkage, and we obtain it directly from minimality, from distances, or from acyclicity, with polynomial bounds, whereas in~\cite{HKMM26a} the order comes from a split or a segmentation, as explained above.}
+Our clocks extend this idea: time may also change along the second linkage, and we obtain it directly from minimality, from distances, or from acyclicity, with polynomial bounds, whereas in~\cite{HKMM26a} the order comes from a split or a segmentation, as explained above.
 
 
-We recall that, by \zcref{cor:younger}, the main result of this paper also implies a polynomial bound for Younger's conjecture. It is worth mentioning that, as an intermediate step toward obtaining the results of this paper, we obtained a new proof of Younger's conjecture with a polynomial bound.\footnote{We note that the degree of the polynomial in this proof of Younger's conjecture \textcolor{red}{is} considerably smaller than \textcolor{red}{that of} the polynomial that we \textcolor{red}{obtain in this paper}.} One of the key ideas of that proof was to define a clock after the deletion of a minimum feedback vertex set, which leaves an acyclic digraph \textcolor{red}{ that contains} the two linkages whose density \textcolor{red}{the proof} uses. A topological order of their union is then a clock for free: every path of the two linkages runs forward in time, and every interval of time meets every path in one subpath.
+We recall that, by \zcref{cor:younger}, the main result of this paper also implies a polynomial bound for Younger's conjecture. It is worth mentioning that, as an intermediate step toward obtaining the results of this paper, we obtained a new proof of Younger's conjecture with a polynomial bound.\footnote{We note that the degree of the polynomial in this proof of Younger's conjecture is considerably smaller than that of the polynomial that we obtain in this paper.} One of the key ideas of that proof was to define a clock after the deletion of a minimum feedback vertex set, which leaves an acyclic digraph  that contains the two linkages whose density the proof uses. A topological order of their union is then a clock for free: every path of the two linkages runs forward in time, and every interval of time meets every path in one subpath.
 
 
- The clocks in the current manuscript grew out of this clock-based proof. However, \textcolor{red}{in the proof of the Directed Grid Theorem,} the two linkages need not lie in an acyclic part of the digraph, and their union may contain cycles, in which case it has no topological order. Hence, for the main result of this paper, \textcolor{red}{we need a much more sophisticated system of clocks}. Namely, we use three clocks, obtained from minimality, from distances, and from acyclicity, all feeding one density theorem. In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock. In the third clock, time runs forward along both linkages.
+ The clocks in the current manuscript grew out of this clock-based proof. However, in the proof of the Directed Grid Theorem, the two linkages need not lie in an acyclic part of the digraph, and their union may contain cycles, in which case it has no topological order. Hence, for the main result of this paper, we need a much more sophisticated system of clocks. Namely, we use three clocks, obtained from minimality, from distances, and from acyclicity, all feeding one density theorem. In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock. In the third clock, time runs forward along both linkages.
 
 \begin{itemize}
   \item \emph{First clock: residual cuts of a minimal linkage} (\zcref{sec:time}).
@@ -615,7 +609,7 @@ We recall that, by \zcref{cor:younger}, the main result of this paper also impli
     Even if the union of $\Rcal$ and $\Qcal$ contains cycles, the strong components of the residual digraph have a topological order.
     The unions of final segments of this order form a nested chain of cuts, that is, of sets that no arc leaves (\zcref{lem:chain-of-cuts}).
     The time of a vertex is the index of the first of these cuts that contains its positive copy (see \zcref{fig:residual-clock} for an example, with a coarser chain of such cuts).
-    Thus, as for the clock of our earlier \textcolor{red}{proof of Younger's conjecture} mentioned above, time comes from a topological order, here of the strong components of an auxiliary digraph.
+    Thus, as for the clock of our earlier proof of Younger's conjecture mentioned above, time comes from a topological order, here of the strong components of an auxiliary digraph.
     Time never decreases along $\Rcal$, and it is controlled along $\Qcal$: for every threshold $i$, the vertices of time at most $i$ form a suffix of every path of $\Qcal$ that avoids an exceptional set of at most $|\Rcal|$ vertices (\zcref{lem:order-at-cut}).
     Moreover, time strictly increases along every arc $e$ of $\Rcal$ outside $\Qcal$.
     Indeed, by minimality and Menger's Theorem (\zcref{prop:menger}), the union of $\Rcal$ and $\Qcal$ without $e$ has a separator of $|\Rcal|-1$ vertices between the starts and the ends of $\Rcal$.
@@ -632,7 +626,7 @@ We recall that, by \zcref{cor:younger}, the main result of this paper also impli
     We use this clock for the dense pairs of Stage~1 (\zcref{step:dense-pair}), whose linkages are shortest paths for one vertex length obtained from one linear program (\zcref{lem:geosystem}).
     The proof of the monotonicity of $\Phi$ is similar to an argument of \textcite[Lemma~7]{BercziK17} for disjoint shortest paths.
   \item \emph{Third clock: a topological order of an acyclic union} (\zcref{cor:acyclic}).
-    This is the clock of our earlier \textcolor{red}{proof of Younger's conjecture} mentioned above.
+    This is the clock of our earlier proof of Younger's conjecture mentioned above.
     In this paper, we use it inside the levels of $\Phi$ that carry too many meetings (see the proof of \zcref{thm:gdl}).
 \end{itemize}
 All three clocks feed one engine: the \hyperref[def:windowed]{windowed webs} and \hyperref[def:chain]{chains} of \zcref{sec:chains}, and the density theorem of \zcref{sec:density}.
@@ -643,12 +637,7 @@ In undirected graphs, \textcite[(3.2) and the proof of~(3.1)]{LeafS15} used the 
 As they note, the existence of this sequence is essentially a result of \textcite[(12.1)]{RobertsonS-GMXXI}.
 Such a linkage also gives a vertex order in which every prefix is separated from the rest by one vertex of each path.
 \textcite[Lemma~4.6]{CT21} stated this order as a result of \textcite{RobertsonS83}, and noted that it follows from the proof of~\cite[Lemma~2.5]{RobertsonS83}, although that lemma is stated in a weaker form.
-% old (replaced on 2026-11-25; the credit to HKMM26a is now given above, after the first paragraph of this subsection):
-% An order in time also underlies the routing temporal digraphs of~\cite[Definition~6.3]{HKMM26a}, in which a linkage passes through pairwise disjoint subgraphs in a common order.
-% Windowed webs describe this setting (see \zcref{sec:chains}).
-% In undirected graphs, the pregrills of~\cite[Section~2]{LeafS15} are a close analogue.
-% In both settings, however, the order is given by the subgraphs, whereas a clock is defined on the union of the two linkages before any windows are chosen.
-\textcolor{red}{Our windowed webs (see \zcref{sec:chains}) describe the setting of the routing temporal digraphs of~\cite[Definition~6.3]{HKMM26a}, in which a linkage passes through pairwise disjoint subgraphs in a common order.}
+Our windowed webs (see \zcref{sec:chains}) describe the setting of the routing temporal digraphs of~\cite[Definition~6.3]{HKMM26a}, in which a linkage passes through pairwise disjoint subgraphs in a common order.
 In undirected graphs, the pregrills of~\cite[Section~2]{LeafS15} are a close analogue.
 \subsection{The objects and the map}\label{sec:ov-notions}
 
@@ -1146,7 +1135,7 @@ Stage~1 is the case $H=\Hwl$, since every expansion of $\Hwl$ contains a good pa
   The first one comes from the residual cuts of a linkage $\Rcal$ that is \hyperref[def:minimal]{minimal} with respect to the other linkage.
   Its exceptional sets satisfy $|X_i|\le|\Rcal|$, and its properties persist when we pass to subpaths of the two linkages (\zcref{cor:timed-dense}).
   The second one is the sum of two distances of \zcref{step:dense-pair}.
-  The third one, the acyclic clock of our earlier \textcolor{red}{proof of} Younger's conjecture, is a topological order of the union of the two linkages when this union is acyclic (\zcref{cor:acyclic}).
+  The third one, the acyclic clock of our earlier proof of Younger's conjecture, is a topological order of the union of the two linkages when this union is acyclic (\zcref{cor:acyclic}).
 
   We illustrate the proof in \zcref{fig:ov-density}.
   We first cut time into slots that carry comparable numbers of meeting pairs, and we discard the few columns that meet the exceptional sets $X_i$ of the slot boundaries.
@@ -3436,10 +3425,9 @@ We remark that, in~\cite[Section~9.6c]{Schrijver03}, a set $X$ is said to be lin
 
 We use the following elementary facts by name, without stating them as propositions:
 \begin{itemize}
-  % (red: references added on 2026-11-25 at the owner's request; locations checked in the books, see LOG.md)
-  \item the union bound, the law of total probability, linearity of expectation, and the fact that events determined by disjoint sets of independent random choices are mutually independent\textcolor{red}{ (see e.g.~\cite[Lemma~1.2, Theorem~1.6, and Theorem~2.1]{MitzenmacherU05} and the Mutual Independence Principle in~\cite[Section~4.1]{MolloyR02})};
-  \item the Cauchy--Schwarz inequality\textcolor{red}{ (see e.g.~\cite[Chapter~1]{Steele04})};
-  \item the binomial theorem\textcolor{red}{ (see e.g.~\cite[Equation~(5.12)]{GrahamKP94})};
+  \item the union bound, the law of total probability, linearity of expectation, and the fact that events determined by disjoint sets of independent random choices are mutually independent (see e.g.~\cite[Lemma~1.2, Theorem~1.6, and Theorem~2.1]{MitzenmacherU05} and the Mutual Independence Principle in~\cite[Section~4.1]{MolloyR02});
+  \item the Cauchy--Schwarz inequality (see e.g.~\cite[Chapter~1]{Steele04});
+  \item the binomial theorem (see e.g.~\cite[Equation~(5.12)]{GrahamKP94});
   \item the fact that every permutation $\pi$ of $[n]$ is a product of at most $n(n-1)/2$ \emph{adjacent transpositions}, that is, transpositions of two consecutive integers, since the least number of such factors is the number of pairs $c<c'$ with $\pi(c)>\pi(c')$ (see e.g.~\textcite[Proposition~1.5.2]{BjornerBrenti05});
   \item the fact that every acyclic digraph has a \emph{topological order}, that is, an injective numbering of its vertices that increases along every arc (see e.g.~\cite[Proposition~1.4.3]{BangJensenG02}); and
   \item the fact that the strong components of a digraph can be ordered so that every arc between two distinct strong components goes from an earlier one to a later one (see e.g.~\cite[Section~1.5]{BangJensenG02}).
@@ -5285,7 +5273,7 @@ The following observation, which does not involve the time, bounds from below th
 \end{observation}
 
 The second corollary applies to two linkages with an acyclic union, and its time is an injective topological numbering.
-This time is the acyclic clock of our earlier \textcolor{red}{proof of} Younger's conjecture (see \zcref{sec:ov-clock}).
+This time is the acyclic clock of our earlier proof of Younger's conjecture (see \zcref{sec:ov-clock}).
 
 \begin{corollary}\label{cor:acyclic}
   Let $w_0\ge1$ and $L\ge3$ be integers, let $\delta>0$ be such that $1/\delta$ is an integer, and let the parameters be as in~\eqref{eq:dense-params} at $(w_0,L,\delta)$.
