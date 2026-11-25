@@ -603,7 +603,7 @@ Our clocks extend this idea: time may also change along the second linkage, and 
 We recall that, by \zcref{cor:younger}, the main result of this paper also implies a polynomial bound for Younger's conjecture. It is worth mentioning that, as an intermediate step toward obtaining the results of this paper, we obtained a new proof of Younger's conjecture with a polynomial bound.\footnote{We note that the degree of the polynomial in this proof of Younger's conjecture \textcolor{red}{is} considerably smaller than \textcolor{red}{that of} the polynomial that we \textcolor{red}{obtain in this paper}.} One of the key ideas of that proof was to define a clock after the deletion of a minimum feedback vertex set, which leaves an acyclic digraph\textcolor{red}{ that contains} the two linkages whose density \textcolor{red}{the proof} uses. A topological order of their union is then a clock for free: every path of the two linkages runs forward in time, and every interval of time meets every path in one subpath.
 
 
- Our clocks for the Directed Grid Theorem grew out of this clock-based proof. However, \textcolor{red}{in the proof of the Directed Grid Theorem,} the two linkages need not lie in an acyclic part of the digraph, and their union may contain cycles, in which case it has no topological order. Hence, for the main result of this paper, \textcolor{red}{we need a much more sophisticated system of clocks}. Namely, we use three clocks, obtained from minimality, from distances, and from acyclicity, all feeding one density theorem. In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock. In the third clock, time runs forward along both linkages.
+ The clocks in the current manuscript grew out of this clock-based proof. However, \textcolor{red}{in the proof of the Directed Grid Theorem,} the two linkages need not lie in an acyclic part of the digraph, and their union may contain cycles, in which case it has no topological order. Hence, for the main result of this paper, \textcolor{red}{we need a much more sophisticated system of clocks}. Namely, we use three clocks, obtained from minimality, from distances, and from acyclicity, all feeding one density theorem. In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock. In the third clock, time runs forward along both linkages.
 
 \begin{itemize}
   \item \emph{First clock: residual cuts of a minimal linkage} (\zcref{sec:time}).
@@ -612,7 +612,7 @@ We recall that, by \zcref{cor:younger}, the main result of this paper also impli
     Even if the union of $\Rcal$ and $\Qcal$ contains cycles, the strong components of the residual digraph have a topological order.
     The unions of final segments of this order form a nested chain of cuts, that is, of sets that no arc leaves (\zcref{lem:chain-of-cuts}).
     The time of a vertex is the index of the first of these cuts that contains its positive copy (see \zcref{fig:residual-clock} for an example, with a coarser chain of such cuts).
-    Thus, as for the clock of our earlier \textcolor{red}{proof of Younger's conjecture} described above, time comes from a topological order, here of the strong components of an auxiliary digraph.
+    Thus, as for the clock of our earlier \textcolor{red}{proof of Younger's conjecture} mentioned above, time comes from a topological order, here of the strong components of an auxiliary digraph.
     Time never decreases along $\Rcal$, and it is controlled along $\Qcal$: for every threshold $i$, the vertices of time at most $i$ form a suffix of every path of $\Qcal$ that avoids an exceptional set of at most $|\Rcal|$ vertices (\zcref{lem:order-at-cut}).
     Moreover, time strictly increases along every arc $e$ of $\Rcal$ outside $\Qcal$.
     Indeed, by minimality and Menger's Theorem (\zcref{prop:menger}), the union of $\Rcal$ and $\Qcal$ without $e$ has a separator of $|\Rcal|-1$ vertices between the starts and the ends of $\Rcal$.
@@ -629,7 +629,7 @@ We recall that, by \zcref{cor:younger}, the main result of this paper also impli
     We use this clock for the dense pairs of Stage~1 (\zcref{step:dense-pair}), whose linkages are shortest paths for one vertex length obtained from one linear program (\zcref{lem:geosystem}).
     The proof of the monotonicity of $\Phi$ is similar to an argument of \textcite[Lemma~7]{BercziK17} for disjoint shortest paths.
   \item \emph{Third clock: a topological order of an acyclic union} (\zcref{cor:acyclic}).
-    This is the clock of our earlier \textcolor{red}{proof of Younger's conjecture} described above.
+    This is the clock of our earlier \textcolor{red}{proof of Younger's conjecture} mentioned above.
     In this paper, we use it inside the levels of $\Phi$ that carry too many meetings (see the proof of \zcref{thm:gdl}).
 \end{itemize}
 All three clocks feed one engine: the \hyperref[def:windowed]{windowed webs} and \hyperref[def:chain]{chains} of \zcref{sec:chains}, and the density theorem of \zcref{sec:density}.
