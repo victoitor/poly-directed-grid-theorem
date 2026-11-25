@@ -242,7 +242,7 @@ pdfauthor={Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, Ignasi S
 \noindent{\small\textbf{Keywords:} directed treewidth, cylindrical grid, Directed Grid Theorem, polynomial bound, linkages, cycle of well-linked sets, Younger's conjecture, Erd\H{o}s--P\'osa property. \par}
 \label{front:keywords}
 
-\bigskip
+% the same gap (\medskip) between the blocks of the front page, so that the whole funding fits on page 1
 \medskip
 
 
@@ -255,12 +255,13 @@ This project started with a ``human work'' of the authors trying to improve the 
 %\smallskip
 
 
-\metadatum{Related repository.}{We will maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}
+{\let\bigskip\medskip % (\metadatum starts with \bigskip)
+\metadatum{Related repository.}{We will maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}}
 
 % Funding: one entry per author, all aligned after the label "Funding." (hanging indentation)
 \newlength{\fundingindent}
 \settowidth{\fundingindent}{\small\textbf{Funding.}\enskip}
-\par\bigskip
+\par\medskip
 {\small\parskip=0pt
 \noindent\hangindent\fundingindent\hangafter1
 \textbf{Funding.}\enskip\emph{Victor Campos}: CNPq (Bolsa de Produtividade em Pesquisa 310785/2025-1 and project TAPIOCA 404479/2023-5) and CAPES/COFECUB (437841/2018-9).\par
