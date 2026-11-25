@@ -239,36 +239,39 @@ pdfauthor={Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, Ignasi S
 \end{abstract}
 %%%%%% end chunks/00-abstract.tex
 
+% Front page: its blocks (abstract, keywords, AI box, repository, funding) are separated by equal stretchable gaps,
+% which share the free space of the page; the whole front page must still fit on page 1.
+% (primitive \vskip: with the calc package, \vspace does not accept "plus")
+\newcommand{\frontgap}{\par\vskip 6pt plus 1fill\relax}
+\frontgap
 \noindent{\small\textbf{Keywords:} directed treewidth, cylindrical grid, Directed Grid Theorem, polynomial bound, linkages, cycle of well-linked sets, Younger's conjecture, Erd\H{o}s--P\'osa property. \par}
 \label{front:keywords}
 
-% the same gap (\medskip) between the blocks of the front page, so that the whole funding fits on page 1
-\medskip
-
-
-% framed paragraph (try): \fbox around a \parbox of the full text width
-{\setlength{\fboxsep}{6pt}%
+\frontgap
+% framed paragraph: \fbox around a \parbox of the full text width, without a line number for the box
+\nolinenumbers
+{\setlength{\fboxsep}{8pt}%
 \noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\small\textbf{Discussion on the use of AI in this paper.}\label{front:ai-start}
 This project started with a ``human work'' of the authors trying to improve the recent elementary bound for the Directed Grid Theorem by Hatzel, Kreutzer, Garlet Milani, and Muzi [FOCS 2024], in particular using the tools that we have been developing in the last years around directed treewidth, directed disjoint paths, and brambles with congestion. We did obtain some improvements, and at some point we started using LLMs (the actual models are irrelevant to this discussion). By guiding the process, often selecting the proof strategy, we quickly obtained dramatic improvements. After some weeks of intensive exchanges with the LLMs, and after going through several intermediate results, the eventual proof presented here was found. Because of its length and complexity, we have not yet (humanly) revised the whole proof in detail. For this reason, we make this manuscript available on arXiv, but we do not plan to submit it in its current form to any conference or journal. As a medium-term project over the coming months, we plan to write ``human-friendly'' proofs of the results in this paper.
 \par\label{front:ai-end}}}}
+\par
+\linenumbers
 
-%\smallskip
-
-
-{\let\bigskip\medskip % (\metadatum starts with \bigskip)
+\frontgap
+{\let\bigskip\relax % (\metadatum starts with \bigskip; the gap is \frontgap)
 \metadatum{Related repository.}{We will maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}}
 
 % Funding: one entry per author, all aligned after the label "Funding." (hanging indentation)
 \newlength{\fundingindent}
 \settowidth{\fundingindent}{\small\textbf{Funding.}\enskip}
-\par\medskip
+\frontgap
 {\small\parskip=0pt
 \noindent\hangindent\fundingindent\hangafter1
 \textbf{Funding.}\enskip\emph{Victor Campos}: CNPq (Bolsa de Produtividade em Pesquisa 310785/2025-1 and project TAPIOCA 404479/2023-5) and CAPES/COFECUB (437841/2018-9).\par
 \noindent\hangindent\fundingindent\hangafter0
 \emph{Raul Lopes}: DASHH, Data Science in Hamburg -- Helmholtz Graduate School for the Structure of Matter (HIDSS-0002).\par
 \noindent\hangindent\fundingindent\hangafter0
-\emph{Rodrigo Nogueira}: CNPq (project TAPIOCA 404479/2023-5) and CAPES (Finance Code 001).\par
+\emph{Rodrigo Nogueira}: CNPq (project TAPIOCA 404479/2023-5) and CAPES \mbox{(Finance Code 001)}.\par
 \noindent\hangindent\fundingindent\hangafter0
 \emph{Ignasi Sau}: French ANR project ELIT (ANR-20-CE48-0008-01).\par}
 \label{front:funding}
@@ -600,7 +603,7 @@ The layers of the routing temporal digraph~\cite[Definition~6.3]{HKMM26a} are th
 Our clocks extend this idea: time may also change along the second linkage, and we obtain it directly from minimality, from distances, or from acyclicity, with polynomial bounds, whereas in~\cite{HKMM26a} the order comes from a split or a segmentation, as explained above.}
 
 
-We recall that, by \zcref{cor:younger}, the main result of this paper also implies a polynomial bound for Younger's conjecture. It is worth mentioning that, as an intermediate step toward obtaining the results of this paper, we obtained a new proof of Younger's conjecture with a polynomial bound.\footnote{We note that the degree of the polynomial in this proof of Younger's conjecture \textcolor{red}{is} considerably smaller than \textcolor{red}{that of} the polynomial that we \textcolor{red}{obtain in this paper}.} One of the key ideas of that proof was to define a clock after the deletion of a minimum feedback vertex set, which leaves an acyclic digraph\textcolor{red}{ that contains} the two linkages whose density \textcolor{red}{the proof} uses. A topological order of their union is then a clock for free: every path of the two linkages runs forward in time, and every interval of time meets every path in one subpath.
+We recall that, by \zcref{cor:younger}, the main result of this paper also implies a polynomial bound for Younger's conjecture. It is worth mentioning that, as an intermediate step toward obtaining the results of this paper, we obtained a new proof of Younger's conjecture with a polynomial bound.\footnote{We note that the degree of the polynomial in this proof of Younger's conjecture \textcolor{red}{is} considerably smaller than \textcolor{red}{that of} the polynomial that we \textcolor{red}{obtain in this paper}.} One of the key ideas of that proof was to define a clock after the deletion of a minimum feedback vertex set, which leaves an acyclic digraph \textcolor{red}{ that contains} the two linkages whose density \textcolor{red}{the proof} uses. A topological order of their union is then a clock for free: every path of the two linkages runs forward in time, and every interval of time meets every path in one subpath.
 
 
  The clocks in the current manuscript grew out of this clock-based proof. However, \textcolor{red}{in the proof of the Directed Grid Theorem,} the two linkages need not lie in an acyclic part of the digraph, and their union may contain cycles, in which case it has no topological order. Hence, for the main result of this paper, \textcolor{red}{we need a much more sophisticated system of clocks}. Namely, we use three clocks, obtained from minimality, from distances, and from acyclicity, all feeding one density theorem. In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock. In the third clock, time runs forward along both linkages.
