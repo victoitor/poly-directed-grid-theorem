@@ -344,7 +344,7 @@ Beyond cycles, we also obtain polynomial packing-covering bounds for every fixed
 To this end, we repeat with \zcref{thm:grid-main} the deduction that \textcite{AKKW16} made from the Directed Grid Theorem, in the quantitative form of~\cite[Theorem~1.6]{HKMM26b}.
 
 Our result also has algorithmic consequences, through the usual alternative between large and small directed treewidth.
-For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+\textcolor{red}{f}(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$ (see \zcref{thm:long-cycle-algorithm}).
+For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+\textcolor{red}{f}(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$\textcolor{red}{ and $f$ is the function defined in \zcref{thm:grid-main}} (see \zcref{thm:long-cycle-algorithm}).
 Indeed, we try every family of $k$ disjoint paths with $\ell$ vertices each, and we delete their inner vertices.
 If the remaining digraph contains a cylindrical grid of order $r$ as a butterfly minor, then the input digraph contains the desired cycles.
 Otherwise, we find an arboreal decomposition of the remaining digraph of width bounded by a polynomial in $k+\ell$, and we use it in a linkage algorithm that decides whether the paths of the family can be closed into cycles.
