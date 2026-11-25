@@ -326,32 +326,34 @@ By a remark of \textcite[Section~6]{HKMM26b}, \zcref{thm:grid-main} also answers
 
 We now turn to Younger's conjecture~\cite{Younger73}.
 It concerns the maximum number $\nu(D)$ of disjoint cycles in a digraph $D$ and the minimum size $\tau(D)$ of a feedback vertex set of $D$ (see \zcref{def:nu-tau}), and it asserts that $\tau(D)$ is bounded from above by a function of $\nu(D)$.
-\textcite{ReedRST96} proved this conjecture with a bound that is not elementary.
+% (red: special cases and variants of Younger's conjecture, after Rodrigo's comment; added on 2026-11-25, to be approved)
+\textcite{ReedRST96} proved this conjecture with a bound that is not elementary\textcolor{red}{ (see~\cite{McCuaig93,ReedS96,GoemansW98,GueninT11,SchlombergTV25,BessyBKSSTZ21,AKKW16,Seymour95,LucchesiY78,Seymour96} for results on particular cases and variants of this conjecture)}.
 The first elementary bound is due to \textcite{HKMM24}, and in the full version~\cite{HKMM26a} of their article it is a tower of exponentials of height~$8$. In~\cite[Question~10.1]{HKMM26a}, the authors asked whether a polynomial bound exists. We answer this question affirmatively by showing that every digraph $D$ satisfies
 % (red: f of thm:grid-main instead of p, which is only defined in eq:pk; added on 2026-11-25, to be approved)
 \[
   \tau(D)\le\nu(D)\,\textcolor{red}{f}\bigl(\nu(D)+1\bigr),
 \]
 \textcolor{red}{where $f$ is the function defined in \zcref{thm:grid-main}. This is a polynomial bound of order $\mathcal{O}\bigl(\nu(D)^{20\,031\,569}\bigr)$}; see \zcref{cor:younger}.
-We deduce this inequality from \zcref{thm:grid-main} and the cycle-packing inequality $\tau(D)\le(\dtw(D)+1)\nu(D)$ of \textcite[conference version, Lemma~3]{MMPRS22}, which we reprove in \zcref{prop:cycle-packing}.
+We deduce this inequality from \zcref{thm:grid-main} and the cycle-packing inequality $\tau(D)\le(\dtw(D)+1)\nu(D)$ of \textcite[conference version, Lemma~3]{MMPRS22}, which we reprove for completeness in \zcref{prop:cycle-packing}.
 
 For relaxed packings, polynomial bounds were already known.
 In~\cite[Theorem~1]{MMPRS22}, the authors showed that a digraph has a feedback vertex set of size $\mathcal{O}(k^4)$ unless it has $k$ cycles such that every vertex lies on at most four of them.
 If every vertex may lie on at most two of the cycles, their bound is $\mathcal{O}(k^6)$.
 For the arc version of Younger's conjecture, \textcite[Theorem~1]{GSS26} recently proved that every Eulerian digraph without $k$ arc-disjoint cycles has a set of $\mathcal{O}(k^4)$ arcs meeting every cycle.
 Note that their result concerns arc-disjoint cycles in Eulerian digraphs, whereas our bound concerns vertex-disjoint cycles in arbitrary digraphs.
-Beyond cycles, we also obtain polynomial packing-covering bounds for every fixed strongly connected digraph that is a butterfly minor of a cylindrical grid (see \zcref{cor:strong-pattern}).
+
+
+Beyond cycles, in fact our results yield polynomial packing-covering bounds for every fixed strongly connected digraph that is a butterfly minor of a cylindrical grid (see \zcref{cor:strong-pattern}).
 To this end, we repeat with \zcref{thm:grid-main} the deduction that \textcite{AKKW16} made from the Directed Grid Theorem, in the quantitative form of~\cite[Theorem~1.6]{HKMM26b}.
 
-Our result also has algorithmic consequences, through the usual alternative between large and small directed treewidth.
-For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+\textcolor{red}{f}(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$\textcolor{red}{ and $f$ is the function defined in \zcref{thm:grid-main}} (see \zcref{thm:long-cycle-algorithm}).
+Our result also has algorithmic consequences, through the typical win-win approach according to large and small directed treewidth. For instance, for fixed $k$ and $\ell$, we can find $k$ disjoint directed cycles of length at least $\ell$ in a digraph with $n$ vertices, or decide that none exist, in time $n^{\mathcal{O}(k\ell+\textcolor{red}{f}(r))}$, where $r=\max\{2,k,\lceil\ell/2\rceil\}$  and $f$ is the function defined in \zcref{thm:grid-main} (see \zcref{thm:long-cycle-algorithm}).
 Indeed, we try every family of $k$ disjoint paths with $\ell$ vertices each, and we delete their inner vertices.
 If the remaining digraph contains a cylindrical grid of order $r$ as a butterfly minor, then the input digraph contains the desired cycles.
 Otherwise, we find an arboreal decomposition of the remaining digraph of width bounded by a polynomial in $k+\ell$, and we use it in a linkage algorithm that decides whether the paths of the family can be closed into cycles.
 \textcite[Section~1]{KawarabayashiK15} already observed that the Directed Grid Theorem gives, for every $\ell$, the Erd\H{o}s--P\'osa property for cycles of length at least $\ell$.
 For the algorithm of \zcref{thm:long-cycle-algorithm}, our contribution is the polynomial bound on the exponent of its running time.
 
-For linkage problems with prescribed terminals, polynomial bounds already follow from brambles of constant congestion, without passing through the grid.
+It is worth mentioning that, for linkage problems with prescribed terminals, polynomial bounds already follow from brambles of constant congestion, without passing through the grid.
 We say that a digraph is \emph{$(k,c)$-linked} if, for all vertices $s_1,t_1,\dots,s_k,t_k$, it has paths $P_1,\dots,P_k$ such that each $P_i$ runs from $s_i$ to $t_i$ and every vertex lies on at most $c$ of them.
 \textcite{CCLS25} proved Menger-like dualities and deduced that every $k$-strongly connected digraph with a bramble of congestion $c\ge2$ and size at least $2k(ck-c+2)+c(k-1)$ is $(k,c)$-linked, improving a result of \textcite{EMW17}.
 \textcite{LS26} made the bramble construction of~\cite{MPRS22} run in polynomial time when a path system is given.
