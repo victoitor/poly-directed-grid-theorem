@@ -287,10 +287,7 @@ This project started with a ``human work'' of the authors trying to improve the 
 
 The Grid Theorem of \textcite{RobertsonSeymour86} states that every graph of sufficiently large treewidth contains a large grid as a minor (see also the book of \textcite[Chapter~12]{Diestel17}).
 % (red: intermediate and very recent bounds, added on 2026-11-25 after Rodrigo's comment; to be approved)
-\textcolor{red}{\textcite{RST94} showed that treewidth $2^{\mathcal{O}(k^5)}$ suffices to force a $k\times k$ grid (see also the short proof of \textcite{DJGT99}), and this bound was improved to $2^{\mathcal{O}(k^2\log k)}$ by \textcite{KawarabayashiK20} and by \textcite{LeafS15}.}
-\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid\textcolor{red}{, namely $\mathcal{O}(k^{98}\operatorname{polylog}k)$.
-\textcite{Chuzhoy15,Chuzhoy16} lowered it to $\mathcal{O}(k^{36}\operatorname{polylog}k)$ and then to $\mathcal{O}(k^{19}\operatorname{polylog}k)$}, and \textcite{CT21} subsequently improved it to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid.
-\textcolor{red}{Very recently, two further improvements have been announced, which have not been published yet: a bound of $\mathcal{O}(k^8\operatorname{polylog}k)$ by Bonnet~\cite{Bonnet26} and a bound of $\mathcal{O}(k^6\operatorname{polylog}k)$ by \textcite{Hajiaghayi26}.}
+\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid\textcolor{red}{, improving on the exponential bounds of~\cite{RST94,DJGT99,KawarabayashiK20,LeafS15}}, and \textcite{CT21} subsequently improved it\textcolor{red}{, after the intermediate bounds of~\cite{Chuzhoy15,Chuzhoy16},} to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid\textcolor{red}{; very recently, Bonnet~\cite{Bonnet26} and \textcite{Hajiaghayi26} announced the bounds $\mathcal{O}(k^8\operatorname{polylog}k)$ and $\mathcal{O}(k^6\operatorname{polylog}k)$, respectively, which are not published yet}.
 
 For digraphs, \textcite{Johnson2001} introduced directed treewidth (see \zcref{def:dtw}), a concept that was also proposed by \textcite{Reed99}.
 The directed-grid conjecture is the analogue of the Grid Theorem for digraphs, with directed treewidth, cylindrical grids, and butterfly minors in place of treewidth, grids, and minors, respectively (see \zcref{def:cyl-grid,def:butterfly}).
@@ -322,6 +319,8 @@ In this paper we show that $f$ can be chosen to be a polynomial, by proving the 
   % is a polynomial $p$ of degree $20\,031\,568$ with positive leading coefficient, defined in~\eqref{eq:pk}, such that, for every integer $k\ge2$, every digraph $D$ with directed treewidth $\dtw(D)\ge p(k)$ contains the cylindrical grid $G_k$ of order $k$ as a butterfly minor.
 \end{theorem}
 
+% (red: defines p, used below in the intro; added on 2026-11-25, to be approved)
+\textcolor{red}{More precisely, our proof shows that, for every integer $k\ge2$, we can take $f(k)=p(k)$, where $p$ is the explicit polynomial of degree $20\,031\,568$ defined in~\eqref{eq:pk} (see \zcref{lem:pk-degree}).}
 We remark that our goal was to obtain a polynomial bound, and we made no attempt to optimize its degree.
 The best known lower bound for the function $f$ is $f(k)=\Omega(k^2\log k)$.
 This follows from the undirected lower bound of \textcite{RST94}, by replacing each edge by two opposite arcs (see \zcref{prop:grid-lower-bound}).
