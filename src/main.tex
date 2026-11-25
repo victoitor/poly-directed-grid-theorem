@@ -599,23 +599,12 @@ Numbering the paths of the second linkage in this order gives a time on the unio
 The layers of the routing temporal digraph~\cite[Definition~6.3]{HKMM26a} are the steps of this time, and temporal walks~\cite[Definition~6.2]{HKMM26a} move forward in it.
 Our clocks extend this idea: time may also change along the second linkage, and we obtain it directly from minimality, from distances, or from acyclicity, with polynomial bounds, whereas in~\cite{HKMM26a} the order comes from a split or a segmentation, as explained above.}
 
-% Keep the highlighted box on one page (the overview is \raggedbottom, so a break only leaves white space).
-\needspace{10\baselineskip}
-\begin{simplestatement}[From a topological order to a system of clocks]
-  Before this paper, we were working on an earlier, unpublished manuscript that obtained a polynomial bound for Younger's conjecture.
-  A key step of its proof was clock-based, and this clock came from acyclicity: it was a topological order of an acyclic digraph that contains the two linkages whose meetings it orders.
-  % old (replaced on 2026-11-25, credit to the temporal digraphs of HKMM26a): The idea of a clock for the Directed Grid Theorem came from us after we obtained this clock-based proof.
-  \textcolor{red}{Our clocks for the Directed Grid Theorem grew out of this clock-based proof.}
-  For the main result of this paper, the clock is a much more sophisticated system: three clocks, obtained from minimality, from distances, and from acyclicity, feed one density theorem.
-\end{simplestatement}
 
-We remark that, by \zcref{cor:younger}, the main result of this paper also implies a polynomial bound for Younger's conjecture.
-In our earlier manuscript, the clock-based step works after the deletion of a minimum feedback vertex set, which leaves an acyclic digraph, and the two linkages whose density it uses lie in this digraph.
-A topological order of their union is then a clock for free: every path of the two linkages runs forward in time, and every interval of time meets every path in one subpath.
-In the proof of the Directed Grid Theorem, however, the two linkages need not lie in an acyclic part of the digraph, and their union may contain cycles, in which case it has no topological order.
-We therefore use the following three clocks.
-In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock.
-In the third clock, time runs forward along both linkages.
+We recall that, by \zcref{cor:younger}, the main result of this paper also implies a polynomial bound for Younger's conjecture. It is worth mentioning that, as an intermediate step toward obtaining the results of this paper, we obtained a new proof of Younger's conjecture with a polynomial bound\footnote{The degree of the polynomial in this proof of Younger's conjecture was considerably smaller than the polynomial that we obtained in the current manuscript, but we don't plan to publish it separately.}. One of the key ideas of that proof was to define a clock after the deletion of a minimum feedback vertex set, which leaves an acyclic digraph, and the two linkages whose density it uses lie in this digraph. A topological order of their union is then a clock for free: every path of the two linkages runs forward in time, and every interval of time meets every path in one subpath.
+
+
+ Our clocks for the Directed Grid Theorem grew out of this clock-based proof. However, in this case the two linkages need not lie in an acyclic part of the digraph, and their union may contain cycles, in which case it has no topological order. Hence, for the main result of this paper, the notion of clock is a much more sophisticated system. Namely, we use three clocks, obtained from minimality, from distances, and from acyclicity, all feeding one density theorem. In the first two clocks, time runs forward along one linkage and backward along the other, up to small exceptional sets in the case of the first clock. In the third clock, time runs forward along both linkages.
+ 
 \begin{itemize}
   \item \emph{First clock: residual cuts of a minimal linkage} (\zcref{sec:time}).
     We reroute one linkage $\Rcal$ so that it is \hyperref[def:minimal]{minimal} with respect to the other linkage $\Qcal$ (\zcref{lem:reroute-exists}), that is, so that no arc of $\Rcal$ outside $\Qcal$ can be avoided by rerouting $\Rcal$ inside $\Rcal\cup\Qcal$.
