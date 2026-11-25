@@ -239,15 +239,16 @@ pdfauthor={Victor Campos, Allen Ibiapina, Raul Lopes, Rodrigo Nogueira, Ignasi S
 \end{abstract}
 %%%%%% end chunks/00-abstract.tex
 
-% Front page: its blocks (abstract, keywords, AI box, repository, funding) are separated by equal stretchable gaps,
-% which share the free space of the page; the whole front page must still fit on page 1.
+% Front page: the keywords stay close to the abstract; the other blocks (AI box, repository, funding) are separated by
+% stretchable gaps, which share the free space of the page, the gaps around the AI box getting twice as much
+% (\frontgap[2]); the whole front page must still fit on page 1.
 % (primitive \vskip: with the calc package, \vspace does not accept "plus")
-\newcommand{\frontgap}{\par\vskip 6pt plus 1fill\relax}
-\frontgap
+\newcommand{\frontgap}[1][1]{\par\vskip 6pt plus #1fill\relax}
+\par\vskip 3pt\relax
 \noindent{\small\textbf{Keywords:} directed treewidth, cylindrical grid, Directed Grid Theorem, polynomial bound, linkages, cycle of well-linked sets, Younger's conjecture, Erd\H{o}s--P\'osa property. \par}
 \label{front:keywords}
 
-\frontgap
+\frontgap[2]
 % framed paragraph: \fbox around a \parbox of the full text width, without a line number for the box
 \nolinenumbers
 {\setlength{\fboxsep}{6pt}%
@@ -257,7 +258,7 @@ This project started with a ``human work'' of the authors trying to improve the 
 \par
 \linenumbers
 
-\frontgap
+\frontgap[2]
 {\let\bigskip\relax % (\metadatum starts with \bigskip; the gap is \frontgap)
 \metadatum{Related repository.}{We will maintain updated information and files related to this project in the following link: \url{https://github.com/victoitor/poly-directed-grid-theorem}.}}
 
