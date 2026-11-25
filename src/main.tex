@@ -286,14 +286,18 @@ This project started with a ``human work'' of the authors trying to improve the 
 \section{Introduction}\label{sec:intro}
 
 The Grid Theorem of \textcite{RobertsonSeymour86} states that every graph of sufficiently large treewidth contains a large grid as a minor (see also the book of \textcite[Chapter~12]{Diestel17}).
-\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid, and \textcite{CT21} subsequently improved it to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid.
+% (red: intermediate and very recent bounds, added on 2026-11-25 after Rodrigo's comment; to be approved)
+\textcolor{red}{\textcite{RST94} showed that treewidth $2^{\mathcal{O}(k^5)}$ suffices to force a $k\times k$ grid (see also the short proof of \textcite{DJGT99}), and this bound was improved to $2^{\mathcal{O}(k^2\log k)}$ by \textcite{KawarabayashiK20} and by \textcite{LeafS15}.}
+\textcite{CC16} obtained the first polynomial bound on the treewidth needed to force an undirected grid\textcolor{red}{, namely $\mathcal{O}(k^{98}\operatorname{polylog}k)$.
+\textcite{Chuzhoy15,Chuzhoy16} lowered it to $\mathcal{O}(k^{36}\operatorname{polylog}k)$ and then to $\mathcal{O}(k^{19}\operatorname{polylog}k)$}, and \textcite{CT21} subsequently improved it to $\mathcal{O}(k^9\operatorname{polylog}k)$ for a $k\times k$ grid.
+\textcolor{red}{Very recently, two further improvements have been announced, which have not been published yet: a bound of $\mathcal{O}(k^8\operatorname{polylog}k)$ by Bonnet~\cite{Bonnet26} and a bound of $\mathcal{O}(k^6\operatorname{polylog}k)$ by \textcite{Hajiaghayi26}.}
 
 For digraphs, \textcite{Johnson2001} introduced directed treewidth (see \zcref{def:dtw}), a concept that was also proposed by \textcite{Reed99}.
 The directed-grid conjecture is the analogue of the Grid Theorem for digraphs, with directed treewidth, cylindrical grids, and butterfly minors in place of treewidth, grids, and minors, respectively (see \zcref{def:cyl-grid,def:butterfly}).
 In~\cite[Section~5]{Johnson2001}, the authors record that this conjecture arose in a conversation of Robertson, Seymour, and Thomas with Noga Alon and Bruce Reed, and that it appeared in an equivalent form in the survey of \textcite{Reed97}.
 \textcite{JRSTplanar} proved the planar case in a manuscript from 2001, and \textcite{KK14} extended this result to digraphs whose underlying graphs exclude a fixed minor.
 Finally, \textcite{KawarabayashiK15} proved the conjecture, now known as the Directed Grid Theorem.
-It states that there is a function $f$ such that, for every integer $k\ge2$, every digraph of directed treewidth at least $f(k)$ contains the cylindrical grid of order $k$ as a butterfly minor.
+It states that there is a function $f \colon \NN \to \NN$ such that, for every integer $k\ge2$, every digraph of directed treewidth at least $f(k)$ contains the cylindrical grid of order $k$ as a butterfly minor.
 They also stated that their proof can be turned into an XP algorithm, with parameter $k$, that finds either an arboreal decomposition of suitable width or the grid~\cite[Theorem~1.3]{KawarabayashiK15}.
 \textcite{CLMS22} improved this XP algorithm to an FPT algorithm.
 
@@ -326,9 +330,7 @@ By a remark of \textcite[Section~6]{HKMM26b}, \zcref{thm:grid-main} also answers
 We now turn to Younger's conjecture~\cite{Younger73}.
 It concerns the maximum number $\nu(D)$ of disjoint cycles in a digraph $D$ and the minimum size $\tau(D)$ of a feedback vertex set of $D$ (see \zcref{def:nu-tau}), and it asserts that $\tau(D)$ is bounded from above by a function of $\nu(D)$.
 \textcite{ReedRST96} proved this conjecture with a bound that is not elementary.
-The first elementary bound is due to \textcite{HKMM24}, and in the full version~\cite{HKMM26a} of their article it is a tower of exponentials of height~$8$.\bigskip
-In~\cite[Question~10.1]{HKMM26a}, the authors asked whether a polynomial bound exists.
-We answer this question affirmatively by showing that every digraph $D$ satisfies
+The first elementary bound is due to \textcite{HKMM24}, and in the full version~\cite{HKMM26a} of their article it is a tower of exponentials of height~$8$. In~\cite[Question~10.1]{HKMM26a}, the authors asked whether a polynomial bound exists. We answer this question affirmatively by showing that every digraph $D$ satisfies
 \[
   \tau(D)\le\nu(D)\,p\bigl(\nu(D)+1\bigr),
 \]
