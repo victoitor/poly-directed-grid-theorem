@@ -418,9 +418,13 @@ To compose the three stages, we choose the parameters backward from the order of
 Namely, Stage~3 fixes the width and the length of the cycle of well-linked sets, Stage~2 those of the good path, and Stage~1 the directed treewidth.
 We carry out this composition in \zcref{sec:main}, and we present the degree calculation in \zcref{step:count}.
 
+% (red: after Rodrigo's comment on the costs of the three stages; added on 2026-11-25, to be approved)
+\textcolor{red}{Stage~1 is by far the most costly of the three stages: the bounds of Stages~2 and~3 are moderate, and the exponent $20\,031\,568$ in \zcref{thm:grid-main} comes mainly from the exponents of Stage~1.
+Stage~1 is also where most of the new ideas of this paper are needed, such as the clocks (see \zcref{sec:ov-clock}).}
+
 \subsection{What the proof uses}\label{sec:intro-uses}
 
-Besides elementary facts and textbook results, such as Menger's Theorem (see \zcref{prop:menger}), linear-programming duality, the Gallai--Roy--Vitaver Theorem, and greedy coloring (see \zcref{sec:prelim-textbook}), we use the following results of other papers.
+Besides elementary facts and textbook results, such as Menger's Theorem (see \zcref{prop:menger}), linear-programming duality, the Gallai--Roy--Vitaver Theorem\textcolor{red}{~\cite{Gallai68,Roy67,Vitaver62} (see \zcref{prop:grv})}, and greedy coloring (see \zcref{sec:prelim-textbook}), we use the following results of other papers.
 We state each of them as a proposition, with its exact source and without proof, where it is first needed.
 \begin{itemize}
   \item The Lov\'asz Local Lemma, which goes back to \textcite{ErdosLovasz75}, in a symmetric form (see \zcref{prop:lll}).
@@ -435,7 +439,7 @@ We state each of them as a proposition, with its exact source and without proof,
   \item For the algorithms in \zcref{sec:algorithms}, the width test of~\cite[Theorem~2.19]{CLMS22} together with the haven bound~\cite[(3.1)]{Johnson2001}, and the linkage algorithm of~\cite[(4.8)]{Johnson2001}, with the corrections of its addendum~\cite{JRSTadd} (see \zcref{prop:clms-width-test,prop:haven-dtw,prop:jrst-linkage}).
 \end{itemize}
 Following the proof of~\cite[Lemma~4.2]{AKKW16}, we reprove the cycle-packing inequality $\tau(D)\le(\dtw(D)+1)\nu(D)$ of~\cite[conference version, Lemma~3]{MMPRS22} (see \zcref{prop:cycle-packing}), which we use in \zcref{cor:younger}.
-We also reprove some further results of~\cite{HKMM26a,HKMM26b} in the form that we need.
+We also \textcolor{red}{adapt} some further results of~\cite{HKMM26a,HKMM26b} \textcolor{red}{to} the form that we need.
 Namely, \zcref{lem:spaced-routing}, on routing between spaced terminal sets, is case~(N4) of~\cite[Lemma~8.8]{HKMM26a}, restricted to paths of well-linked sets in normal form and to at most as many terminals as their width.
 Moreover, \zcref{lem:s3-walks} is the temporal reachability lemma of~\cite[Lemma~6.18]{HKMM26a}, stated for reference paths and written with waits.
 Similarly, \zcref{lem:reroute-exists,lem:normalize} extend the observation after~\cite[Definition~2.3]{HKMM26a} and~\cite[Observation~8.9]{HKMM26a}, respectively, and case~\zcref[noname]{item:close-rows-a} of \zcref{lem:close-rows} is the situation of~\cite[Lemma~4.2]{HKMM26b}.
