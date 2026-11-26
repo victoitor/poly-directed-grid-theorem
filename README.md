@@ -17,7 +17,7 @@ We currently have a Lean verification that assumes the correctness of all result
 
 ## Morreu Maria Preá (MMP): A Northeastern Brazilian Expression at the End of a Proof
 
-**“Morreu Maria Preá,”** which translates to “Maria Preá died,” is a popular expression in Northeastern Brazil used to declare that **something is finished, settled, or definitively over**.
+**“Morreu Maria Preá,”** which translates to “Maria Preá died,” is a cultural expression in Northeastern Brazil used to declare that **something is finished, settled, or definitively over**.
 It is the regional equivalent of “that’s that,” “case closed,” or “end of story.”
 
 As a small act of regional pride, we finish the proofs of this manuscript with an **MMP** symbol.
