@@ -20,7 +20,7 @@ We currently have a Lean verification that assumes the correctness of all result
 **“Morreu Maria Preá,”** which translates to “Maria Preá died,” is a popular expression in Northeastern Brazil used to declare that **something is finished, settled, or definitively over**.
 It is the regional equivalent of “that’s that,” “case closed,” or “end of story.”
 
-Writing **MMP** at the end of a proof is a small act of **regional pride**.
+As a small act of regional pride, we finish the proofs of this manuscript with an **MMP** symbol.
 It takes an expression from Ceará and brings it into the universal language of mathematics.
 It effectively says, *the proof is done, and it is done with the voice of my land*.
 
